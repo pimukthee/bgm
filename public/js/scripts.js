@@ -25,4 +25,64 @@ $( document ).ready(function() {
              .prop("checked", "")
              .end();
     });
+
+    $('#confirmRegisterButton').click(function() {
+        var username = $('#registerUsername').val();
+        var email = $('#registerEmail').val();
+        var password1 = $('#registerPassword').val();
+        var password2 = $('#registreConfirmPassword').val();
+        if(isEmailValid(email)) {
+            hideWarning('Email');
+            $("#warningEmail").css("display", "none");
+        } else {
+            $("#warningEmail").css("display", "block");
+            showWarning('Email');
+        }
+        if(isUsernameValid(username)) {
+            hideWarning('Username');
+        } else {
+            showWarning('Username');
+        }
+        if(isPasswordValid(password1)) {
+            hideWarning('Password');
+        } else {
+            showWarning('Password');
+        }
+        if(isPasswordMatched(password1, password2)) {
+            $("#warningConfirmPassword").css("display", "none");
+            hideWarning('ConfirmPassword');
+        } else {
+            $("#warningConfirmPassword").css("display", "block");
+            showWarning('ConfirmPassword');
+        }
+    });
+
+    function isEmailValid(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email);
+    }
+
+    function isUsernameValid(username) {
+        var re = /^[^\s]{6,}$/;
+        return re.test(username);
+    }
+
+    function isPasswordValid(password) {
+        var re = /^[^\s]{6,}$/;
+        return re.test(password);
+    }
+
+    function isPasswordMatched(password1, password2) {
+        return password1 == password2;
+    }
+
+    function showWarning(id) {
+        $("#formRegister" + id).attr('class', 'form-group has-danger');
+        $("#register" + id).attr('class', 'form-control form-control-danger');
+    }
+
+    function hideWarning(id) {
+        $("#formRegister" + id).attr('class', 'form-group');
+        $("#register" + id).attr('class', 'form-control');
+    }
 });

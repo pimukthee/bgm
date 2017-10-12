@@ -40,7 +40,7 @@
                 <div class="box" style="display: block" id="loginBox">
                     <form>
                         <div class="form-group">
-                            <input type="handle" class="form-control" id="inputHandle" placeholder="Handle">
+                            <input type="username" class="form-control" id="inputUsername" placeholder="Username">
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" id="inputPassword" placeholder="Password">
@@ -49,14 +49,29 @@
                 </div>
                 <div class="box" style="display: none" id="registerBox">
                     <form>
-                        <div class="form-group">
-                            <input type="handle" class="form-control" id="inputHandle" placeholder="Handle">
+                        <div class="form-group row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="registerName" placeholder="Name">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" id="reigsterLname" placeholder="Last name">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                        <div class="form-group" id="formRegisterUsername">
+                            <input type="username" class="form-control" id="registerUsername" placeholder="Username">
+                            <small class="form-text text-muted">Username should not contain whitespace.</small>
                         </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password">
+                        <div class="form-group" id="formRegisterEmail">
+                            <input type="text" class="form-control" id="registerEmail" placeholder="Email">
+                            <div class="form-control-feedback" id="warningEmail" style="display: none">Email is not valid</div>
+                        </div>
+                        <div class="form-group" id="formRegisterPassword">
+                            <input type="password" class="form-control" id="registerPassword" placeholder="Password">
+                            <small class="form-text text-muted">Password should not contain whitespace.</small>
+                        </div>
+                        <div class="form-group" id="formRegisterConfirmPassword">
+                            <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirm Password">
+                            <div class="form-control-feedback" id="warningConfirmPassword" style="display: none">Confirmation mismatched.</div>
                         </div>
                     </form>
                 </div>
