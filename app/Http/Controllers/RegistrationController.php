@@ -28,6 +28,8 @@ class RegistrationController extends Controller
             'password' => bcrypt(request('password'))
         ]);
         
+        auth() -> login($user);
+
         return redirect()->home();
     }
 }

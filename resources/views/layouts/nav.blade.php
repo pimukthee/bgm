@@ -22,5 +22,8 @@
             <input class="form-control mr-sm-2" placeholder="Search" type="text">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+        @if(Auth::check())
+            <div style="color: white">{{Auth::user()->name}}</div>
+        @endif
     </div>
 </nav>
