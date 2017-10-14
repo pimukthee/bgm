@@ -9,7 +9,7 @@ class RegistrationController extends Controller
 {
     public function create() {
         
-        return view('sessions.create')->with('title', 'BGM');
+        return view('registration.create')->with('title', 'BGM');
     }
 
     public function store() 
