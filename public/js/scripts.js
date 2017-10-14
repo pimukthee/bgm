@@ -27,34 +27,7 @@ $( document ).ready(function() {
     });
 
     $('#confirmRegisterButton').click(function() {
-        var username = $('#registerUsername').val();
-        var email = $('#registerEmail').val();
-        var password1 = $('#registerPassword').val();
-        var password2 = $('#registreConfirmPassword').val();
-        if(isEmailValid(email)) {
-            hideWarning('Email');
-            $("#warningEmail").css("display", "none");
-        } else {
-            $("#warningEmail").css("display", "block");
-            showWarning('Email');
-        }
-        if(isUsernameValid(username)) {
-            hideWarning('Username');
-        } else {
-            showWarning('Username');
-        }
-        if(isPasswordValid(password1)) {
-            hideWarning('Password');
-        } else {
-            showWarning('Password');
-        }
-        if(isPasswordMatched(password1, password2)) {
-            $("#warningConfirmPassword").css("display", "none");
-            hideWarning('ConfirmPassword');
-        } else {
-            $("#warningConfirmPassword").css("display", "block");
-            showWarning('ConfirmPassword');
-        }
+        $("#registerForm").submit();
     });
 
     function isEmailValid(email) {

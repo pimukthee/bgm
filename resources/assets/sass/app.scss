@@ -1,9 +1,28 @@
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding:  10px 10px 10px 10px;
+}
 
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
 
-// Variables
-@import "variables";
+/* Add some padding inside the card container */
+.container {
+    padding: 222px 16px;
+}
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+.card-space {
+    margin:  10px 10px 10px 10px;
+}
+
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+body {
+    margin: -24px
+}
