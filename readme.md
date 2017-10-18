@@ -30,9 +30,15 @@ php artisan key:generate
 ```
 php artisan migrate
 ```
+6. Run add seeds to database 
+
+```
+    php artisan db:seed
+```
 
 ## Running on your local machine
 
 ```
 php -S localhost:8000 -t public
 ```
+
