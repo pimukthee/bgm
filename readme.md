@@ -18,10 +18,14 @@ php composer.phar install
 
 2. Create a config file, copy from `.env.example` then rename it to `.env`
    config your database username and password
+3 generate app key
+```
+php artisan key:generate
+```
 
-3. Create a database named `bgm`
+4. Create a database named `bgm`
 
-4. Migrate and seed the database
+5. Migrate and seed the database
 
 ```
 php artisan migrate
