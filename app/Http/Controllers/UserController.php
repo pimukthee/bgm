@@ -9,6 +9,7 @@ class UserController extends Controller
 {
     public function list()
     {
-        return view('users.users', ['title' => 'BGM']);
+        $users  = User::all();
+        return view('users.users', compact('users'));
     }
 }
