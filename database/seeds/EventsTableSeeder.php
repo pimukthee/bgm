@@ -25,7 +25,7 @@ class EventsTableSeeder extends Seeder
             'description' => 'Create a migration for the session 
             database table Create a migration for the session database table',
             'start_date' => '2008-11-13',
-            'user_id' => '3'
+            'user_id' => '2'
         ]);
     }
 }

@@ -14,7 +14,7 @@
                         <h5>DATE : {{$event->start_date}}</h5>
                     </div>
                     <div class="col col-lg-3">
-                        <h4><b></b></h4>
+                        <h4><b>{{$event->user->name}}</b></h4>
                         <p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p>
                     </div>
                 </div>
