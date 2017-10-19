@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome')-> with('title', 'BGM');
-})->name('home');
+Route::get('/', 'EventController@fetchEvents')->name('home');
 
 Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionController@create');
