@@ -17,7 +17,7 @@ class CreateEventsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('user_id');
-            $table->integer('game_id');
+            $table->integer('game_id')->default(0);
             $table->integer('min_rank')->default(0);
             $table->integer('max_participants')->default(5);
             $table->string('location');

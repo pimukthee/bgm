@@ -16,7 +16,7 @@ Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionController@create');
 Route::get('/users', 'UserController@list');
 Route::get('/events/create', 'EventController@create');
-Route::get('/events/store', 'EventController@store');
+Route::post('/events/store', 'EventController@store');
 
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');

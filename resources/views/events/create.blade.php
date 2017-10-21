@@ -6,9 +6,10 @@
 
     <div class="contentBox">
       <form method="post" action="store">
+       {{csrf_field()}}
         <div class="form-group">
             <label for="game">Game Name</label>
-            <input type="text" class="form-control" id="game" name="gameName">
+            <input type="text" class="form-control" id="game" name="game_name">
         </div>
 
         <div class="form-group">
