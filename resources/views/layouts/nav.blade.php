@@ -24,6 +24,8 @@
         </form>
         @if(Auth::check())
             <a class="btn btn-outline-success" href="/logout">Log out</a>
+        @else
+        <a class="btn btn-outline-success" href="/login">Log in</a>
         @endif
     </div>
 </nav>
