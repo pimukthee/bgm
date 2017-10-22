@@ -23,7 +23,9 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         @if(Auth::check())
-            <div style="color: white">{{Auth::user()->name}}</div>
+            <a class="btn btn-outline-success" href="/logout">Log out</a>
+        @else
+        <a class="btn btn-outline-success" href="/login">Log in</a>
         @endif
     </div>
 </nav>

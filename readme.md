@@ -28,12 +28,12 @@ php artisan key:generate
 5. Migrate and seed the database
 
 ```
-php artisan migrate
+php artisan migrate --seed
 ```
-6. Run add seeds to database 
+6. install package 
 
 ```
-    php artisan db:seed
+    php composer.phar require "laravelcollective/html":"^5.4.0"
 ```
 
 ## Running on your local machine
