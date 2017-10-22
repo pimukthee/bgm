@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Event');
     }
 
+    public function participatedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'participants', 'user_id', 'event_id');
+    }
+
     public function createEvent(Event $event)
     {
         $this->events()->save($event);
