@@ -12,11 +12,15 @@
 */
 
 Route::get('/', 'EventController@fetchEvents')->name('home');
+
 Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionController@create');
 Route::get('/users', 'UserController@list');
+Route::get('/users/{user}', 'UserController@show');
+
 Route::get('/events/create', 'EventController@create');
 Route::post('/events/store', 'EventController@store');
 
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
+
