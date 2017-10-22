@@ -11,6 +11,9 @@
                 <div class="col-md-12 col-sm-12 profile-info">
                 <center>
                     <h1>{{$user->name}}</h1>
+                    @if(Auth::check() and $user->name == Auth::user()->name)
+                        <a href="edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
+                    @endif
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint velit dolorum magni nam nihil
                                 aperiam cum natus eaque! Esse facere, amet voluptate atque in quasi officia ad cupiditate
                                 neque voluptatum!<p>
@@ -18,13 +21,13 @@
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12 stats-col">
                                 <div class="stats-value pink">
-                                    <h4>284<h4>
+                                    <h4>{{$user->total_follower}}<h4>
                                 </div>
                                 <div class="stats-title">FOLLOWING</div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 stats-col">
                                 <div class="stats-value pink">
-                                    <h4>684<h4>
+                                    <h4>{{$user->total_following}}<h4>
                                 </div>
                             <div class="stats-title">FOLLOWERS</div>
                             </div>
