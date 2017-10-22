@@ -38,6 +38,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Event::class, 'participants', 'user_id', 'event_id');
     }
 
+    public function join($eventId)
+    {
+        $this->participatedEvents()->attach($eventId);
+    }
+
     public function createEvent(Event $event)
     {
         $this->events()->save($event);
