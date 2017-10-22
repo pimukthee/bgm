@@ -2,36 +2,48 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Event;
 use App\User;
 
 class EventController extends Controller
 {
-
-    public function fetchEvents() {
+    
+    public function fetchEvents()
+    {
         $events = Event::all();
-        return view('welcome', compact('events'));
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('welcome', compact('events', 'participatedEvents'));
     }
-
+    
     public function create()
     {
         return view('events.create');
     }
-
+    
     public function store()
     {
         auth()->user()->createEvent(
             new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']))
         );
-
+        
         return redirect()->home();
     }
-
+    
     public function join() 
     {
         auth()->user()->join(request(['event_id']));
-
+        
         return redirect()->home();
+    }
+    
+    
+    private function getParticipatedEvents()
+    {
+        if (auth()->check())
+        {
+            return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
+        }
     }
 }
