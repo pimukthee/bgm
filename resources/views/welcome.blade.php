@@ -12,6 +12,11 @@
                     </div>
                     <div class="col-md-auto">
                         <h5>DATE : {{$event->start_date}}</h5>
+                        <form method="post" action="{{ URL::to('/join/' . $event->id) }}">
+                            {{ csrf_field() }}
+                            {{ Form::hidden('event_id', $event->id) }}
+                            <button class="btn btn-secondary" type="submit">JOIN</button>
+                        </form>
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>

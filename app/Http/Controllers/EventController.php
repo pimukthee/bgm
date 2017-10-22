@@ -21,10 +21,17 @@ class EventController extends Controller
 
     public function store()
     {
-        auth() -> user() -> createEvent(
+        auth()->user()->createEvent(
             new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']))
         );
 
-        return redirect() -> home();
+        return redirect()->home();
+    }
+
+    public function join() 
+    {
+        auth()->user()->join(request(['event_id']));
+
+        return redirect()->home();
     }
 }
