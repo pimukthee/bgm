@@ -20,3 +20,5 @@ Route::post('/events/store', 'EventController@store');
 
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
+
+Route::get('/list','CategoriesController@show');
