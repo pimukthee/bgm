@@ -12,6 +12,7 @@
                     </div>
                     <div class="col-md-auto">
                         <h5>DATE : {{$event->start_date}}</h5>
+                        <a class="btn btn-secondary" href="{{ URL::to('/join/' . $event->id) }}" role="button">JOIN</a>
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>
