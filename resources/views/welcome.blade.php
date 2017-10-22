@@ -12,6 +12,13 @@
                     </div>
                     <div class="col-md-auto">
                         <h5>DATE : {{$event->start_date}}</h5>
+                        @if (auth()->check() && !in_array($event->id, $participatedEvents))
+                            <form method="post" action="{{ URL::to('/join/' . $event->id) }}">
+                                {{ csrf_field() }}
+                                {{ Form::hidden('event_id', $event->id) }}
+                                <button class="btn btn-secondary" type="submit">JOIN</button>
+                            </form>
+                        @endif
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>
