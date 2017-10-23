@@ -12,7 +12,7 @@
                 <a class="nav-link" href="/categories">Categories</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/createevent">CreateEvent</a>
+            <a class="nav-link" href="/events/create">CreateEvent</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="/profile">Profile</a>
