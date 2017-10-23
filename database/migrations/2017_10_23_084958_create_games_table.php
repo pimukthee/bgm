@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGameTable extends Migration
+class CreateGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -21,6 +21,7 @@ class CreateGameTable extends Migration
             $table->string('cover_picture');
             $table->string('rule');
             $table->string('ranking_rule');
+            $table->timestamps();
         });
     }
 
