@@ -2,13 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Game;
 
 class GameController extends Controller
 {
-    public function show()
+    public function show(Game $game)
     {
-        return view('games.detail');  
+        $users = $this->fetchTopTenPlayers($game);
+        return view('games.detail', compact('users'));  
     }
+
+    private function fetchTopTenPlayers($game)
+    {
+        return DB::table('ranks')
+                    ->select('users.name', 'ranks.score')
+                    ->join('users', 'user_id', '=', 'users.id')
+                    ->where('game_id', $game->id)
+                    ->take(10)
+                    ->orderBy('ranks.score', 'desc')
+                    ->get()
+                    ->toArray();
+    }
+
 }

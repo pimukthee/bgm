@@ -19,25 +19,26 @@
                     <h3>TOP 10 Players</h3>
                     <table class="table table-striped">
                         <tbody>
-                            <tr>
-                                <th scope="row" style="margin: 30px 0px 0px 0px;">1</th>
-                                <td>
-        
-                                    <div class = "row">
-                                        
-                                        <div class="col-4">
-                                            <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
+                            @foreach($users as $user)
+                                <tr>
+                                    <td>
+            
+                                        <div class = "row">
+                                            
+                                            <div class="col-4">
+                                                <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
+                                            </div>
+
+                                            <div class="col-4">
+                                                <h3 style="margin: 30px 0px 0px 0px;">{{$user->name}}</h3>
+                                                <h4 style="margin: 30px 0px 0px 0px;">{{$user->score}}</h4>
+                                            </div>
+
                                         </div>
 
-                                        <div class="col-4">
-                                            <h3 style="margin: 30px 0px 0px 0px;">kawewut</h3>
-                                            <h4 style="margin: 30px 0px 0px 0px;">2000</h4>\
-                                        </div>
-
-                                    </div>
-
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach    
                         </tbody>
                     </table>
                 </div>
