@@ -19,6 +19,7 @@ class CreateRanksTable extends Migration
             $table->integer('game_id')->unsigned()->index();
             $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->integer('score');
+            $table->primary(['user_id', 'game_id']);
             $table->timestamps();
         });
     }

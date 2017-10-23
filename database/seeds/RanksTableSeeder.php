@@ -13,7 +13,7 @@ class RanksTableSeeder extends Seeder
     {
         DB::table('ranks')->insert([
             'user_id' => '1',
-            'game_id' => '2',
+            'game_id' => '1',
             'score' => '100'
         ]);
         DB::table('ranks')->insert([
