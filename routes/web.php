@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'EventController@fetchEvents')->name('home');
+Route::get('/', 'HomeController@show')->name('home');
 
 Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionController@create');
@@ -27,4 +27,7 @@ Route::post('/join/{event}', 'EventController@join');
 Route::post('/events/store', 'EventController@store');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
+
 Route::get('/categories','CategoriesController@show');
+
+Route::get('/list-events','EventController@fetchEvents');
