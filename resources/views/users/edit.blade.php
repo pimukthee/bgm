@@ -31,9 +31,9 @@
                         <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{$user->email}}">
                     </div>
 
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <label for="exampleFormControlTextarea1">About Me</label>
                     <div class="form-group">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="aboutme"></textarea>
+                    <textarea class="form-control" id="about_me" rows="3" name="about_me">{{$user->about_me}}</textarea>
                     </div>
                     <button class="btn btn-primary" type="submit">Save</button>
                 </form>

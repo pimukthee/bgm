@@ -19,12 +19,7 @@
                             <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
                         @endif
 
-                        <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint velit dolorum magni nam nihil
-                                    aperiam cum natus eaque! Esse facere, amet voluptate atque in quasi officia ad cupiditate
-                                    neque voluptatum!
-                        <p>
-
+                        <br>
                         <div class="col-md-12 col-sm-12 col-xs-12 ">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6 col-xs-12 stats-col">
@@ -44,14 +39,13 @@
                         </div>
                     </center>
                     
+                    <br>
+
                     <div class="col-md-12 col-sm-12 col-xs-12 ">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12 space">
                                 <h4>ABOUT ME</h4>
-                                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sint velit dolorum magni nam
-                                            nihil aperiam cum natus eaque! Esse facere, amet voluptate atque in quasi officia
-                                            ad cupiditate neque voluptatum!
-                                <p>
+                                <p>{{$user->about_me}}<p>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12 space">
                                 <h4>RANKING</h4>

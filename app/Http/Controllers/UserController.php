@@ -30,14 +30,16 @@ class UserController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'username' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'about_me' => 'required'
         ]);
 
         $user->name = request('name');
         $user->email = request('email');
+        $user->about_me = request('about_me');
         $user->save();
         
-        return redirect()->home();
+        return redirect()->back();
        
     }
 }
