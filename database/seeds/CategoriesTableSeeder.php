@@ -20,5 +20,11 @@ class CategoriesTableSeeder extends Seeder
             'id' => '2',
             'game_type' => 'Card game'
         ]);
+        
+        DB::table('categories')->insert([
+            'id' => '3',
+            'game_type' => 'Others'
+        ]);
+
     }
 }

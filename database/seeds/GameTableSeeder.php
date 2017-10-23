@@ -50,5 +50,6 @@ class GameTableSeeder extends Seeder
             'rule' => 'Lorem ipsum dolor sit amet.',
             'ranking_rule' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.' 
         ]); 
+        
     }
 }
