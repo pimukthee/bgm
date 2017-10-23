@@ -13,6 +13,6 @@ class CategoriesController extends Controller
         $categories = Category::all();
         $games = Game::all();
 
-        return view('list_games.list', compact('categories', 'games'));
+        return view('games.list', compact('categories', 'games'));
     }
 }
