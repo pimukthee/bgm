@@ -13,9 +13,9 @@
                     <div class="col-md-auto">
                         <h5>DATE : {{$event->start_date}}</h5>
                         @if (auth()->check() && !in_array($event->id, $participatedEvents))
-                            <form method="post" action="{{ URL::to('/join/' . $event->id) }}">
+                            <form method="post" action="/join/{{$event->id}}">
                                 {{ csrf_field() }}
-                                {{ Form::hidden('event_id', $event->id) }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-secondary" type="submit">JOIN</button>
                             </form>
                         @endif
