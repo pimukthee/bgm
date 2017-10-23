@@ -9,6 +9,6 @@ class GameController extends Controller
 {
     public function show()
     {
-        return "success";   
+        return view('games.detail');  
     }
 }
