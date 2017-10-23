@@ -11,7 +11,9 @@ class GameController extends Controller
     public function show(Game $game)
     {
         $users = $this->fetchTopTenPlayers($game);
-        return view('games.detail', compact('users'));  
+        $rules = $this->splitByNewline($game->rule);
+        $rankingRules = $this->splitByNewline($game->ranking_rule);
+        return view('games.detail', compact('users', 'game', 'rules', 'rankingRules'));  
     }
 
     private function fetchTopTenPlayers($game)
@@ -26,4 +28,8 @@ class GameController extends Controller
                     ->toArray();
     }
 
+    private function splitByNewline($rules)
+    {
+        return explode("\n", $rules);
+    }
 }

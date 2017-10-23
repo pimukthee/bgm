@@ -44,18 +44,22 @@
                 </div>
         
                 <div class="col-md-6 col-sm-6 col-xs-6 ">
-                    <h3>RULES</h3>
-                    <ol>
-                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                        <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
-                    </ol>
-                    <h3>RANKING</h3>
-                    <ol>
-                        <li>kawewut chujit</li>
-                        <li>pimutee jakia</li>
-                        <li>touasfkj alskdfjs</li>
-                    </ol>
+                    <div class="form-group">
+                        <h3>RULES</h3>
+                        <ul>
+                            @foreach($rules as $rule)
+                                <li>{{$rule}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <h3>RANKING RULES</h3>
+                        <ul>
+                            @foreach($rankingRules as $rule)
+                                    <li>{{$rule}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
 
             </div>
