@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('total_follower')->default(0);
             $table->integer('total_following')->default(0);
-            $table->longText('about_me')->nullable();
+            $table->Text('about_me')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
