@@ -30,11 +30,6 @@ php artisan key:generate
 ```
 php artisan migrate --seed
 ```
-6. install package 
-
-```
-    php composer.phar require "laravelcollective/html":"^5.4.0"
-```
 
 ## Running on your local machine
 
