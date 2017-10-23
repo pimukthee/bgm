@@ -18,6 +18,8 @@ Route::get('/login', 'SessionController@create');
 Route::get('/logout', 'SessionController@destroy');
 Route::get('/users', 'UserController@list');
 Route::get('/users/{user}', 'UserController@show');
+Route::get('/users/{user}/edit', 'UserController@edit');
+Route::post('/users/{user}/update', 'UserController@update');
 
 Route::get('/events/create', 'EventController@create');
 
