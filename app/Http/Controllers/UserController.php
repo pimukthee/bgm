@@ -12,4 +12,34 @@ class UserController extends Controller
         $users  = User::all();
         return view('users.users', compact('users'));
     }
+
+    public function show(User $user) 
+    {
+        return view('users.show', compact('user'));
+    }
+
+    public function edit(User $user) 
+    {
+        return view('users.edit', compact('user'));
+    }
+
+    public function update(User $user)
+    {
+     
+        
+        $this->validate(request(), [
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'about_me' => 'required'
+        ]);
+
+        $user->name = request('name');
+        $user->email = request('email');
+        $user->about_me = request('about_me');
+        $user->save();
+        
+        return redirect()->back();
+       
+    }
 }

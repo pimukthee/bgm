@@ -4,7 +4,7 @@
     @foreach ($users as $user)
         <div class="card-space">
             <div class="card" style="padding: 0px">
-                <div class="card-header">{{$user -> name}}</div>
+                <div class="card-header"><a href="/users/{{$user->id}}">{{$user -> name}}</a></div>
                 <div class="card-block">
                     <blockquote class="card-blockquote">
                         <ul class="list-inline">
