@@ -2,9 +2,7 @@
 
 @section('content')
 @if(Auth::check() and $user->name == Auth::user()->name)
-<div class="container">
-    <div class="col-md-12">
-        <div class="profile-container">
+<div class="profile-container">
             <div class="profile-header row">
                <div class="col-md-12 col-sm-12 text-center">
                     <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">                </div>
@@ -38,8 +36,6 @@
                     <button class="btn btn-primary" type="submit">Save</button>
                 </form>
             </div>
-        </div>
-    </div>
 </div>
 @endif
 @endsection
