@@ -28,3 +28,6 @@ Route::post('/events/store', 'EventController@store');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::get('/categories','CategoriesController@show');
+
+
+Route::post('/users/{user}/follow', 'UserController@update');

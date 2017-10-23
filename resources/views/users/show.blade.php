@@ -11,9 +11,12 @@
                 <center>
 
                     <h1>{{$user->name}}</h1>
+                    @if(Auth::check() and $user->name != Auth::user()->name)
+                        <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Follow</a>
+                    @endif
 
                     @if(Auth::check() and $user->name == Auth::user()->name)
-                        <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
+                        <a href="/users/{{$user->id}}/follow" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
                     @endif
 
                     <br>
