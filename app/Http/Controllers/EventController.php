@@ -14,7 +14,7 @@ class EventController extends Controller
     {
         $events = Event::all();
         $participatedEvents = $this->getParticipatedEvents();
-        return view('welcome', compact('events', 'participatedEvents'));
+        return view('events.list', compact('events', 'participatedEvents'));
     }
     
     public function create()
