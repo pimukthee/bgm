@@ -11,4 +11,9 @@ class Game extends Model
     {
         return $this->belongsTo(Category::class, 'categories_id');
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'ranks', 'game_id', 'user_id');
+    }
 }
