@@ -12,9 +12,9 @@ class EventController extends Controller
     
     public function fetchEvents()
     {
-        $events = Event::all();
+        $events = Event::all() ->sortBy('start_date');
         $participatedEvents = $this->getParticipatedEvents();
-        return view('welcome', compact('events', 'participatedEvents'));
+        return view('list-events.list-events', compact('events', 'participatedEvents'));
     }
     
     public function create()

@@ -12,7 +12,6 @@ class CategoriesController extends Controller
     {
         $categories = Category::all();
         $games = Game::all();
-
         return view('games.list', compact('categories', 'games'));
     }
 }
