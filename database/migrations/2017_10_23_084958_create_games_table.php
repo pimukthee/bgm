@@ -19,8 +19,8 @@ class CreateGamesTable extends Migration
             $table->integer('categories_id');
             $table->string('icon');
             $table->string('cover_picture');
-            $table->string('rule');
-            $table->string('ranking_rule');
+            $table->text('rule');
+            $table->text('ranking_rule');
             $table->timestamps();
         });
     }
