@@ -12,11 +12,15 @@
 
                     <h1>{{$user->name}}</h1>
                     @if(Auth::check() and $user->name != Auth::user()->name)
-                        <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Follow</a>
+                        <form method="post" action="/users/{{$user->id}}/follow">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
+                                <button class="btn btn-secondary" type="submit">Follow</button>
+                        </form>
                     @endif
 
                     @if(Auth::check() and $user->name == Auth::user()->name)
-                        <a href="/users/{{$user->id}}/follow" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
+                        <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
                     @endif
 
                     <br>

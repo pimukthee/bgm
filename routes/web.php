@@ -22,7 +22,8 @@ Route::get('/users/{user}/edit', 'UserController@edit');
 Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
-Route::post('/users/{user}/follow', 'UserController@update');
+Route::post('/users/{user}/follow', 'FollowController@follow');
+
 
 Route::get('/events/create', 'EventController@create');
 Route::post('/join/{event}', 'EventController@join');
@@ -32,4 +33,5 @@ Route::get('/list-events','EventController@fetchEvents');
 Route::get('/categories','CategoriesController@show');
 
 Route::get('/games/{game}', 'GameController@show');
+
 
