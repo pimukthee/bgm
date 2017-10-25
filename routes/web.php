@@ -19,6 +19,8 @@ Route::get('/logout', 'SessionController@destroy');
 Route::get('/users', 'UserController@list');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
+Route::get('/users/{user}/following', 'UserController@followings');
+Route::get('/users/{user}/followers', 'UserController@followers');
 Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
@@ -35,5 +37,6 @@ Route::post('/join/{event}', 'EventController@join');
 Route::get('/categories','CategoriesController@show');
 
 Route::get('/games/{game}', 'GameController@show');
+
 
 

@@ -56,4 +56,32 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function followings(User $user)
+    {
+       $followingList = $this->getFollowings($user);
+       return view('users.following',compact('followingList'));
+    }
+
+    public function getFollowings(User $user)
+    {
+        return DB::table('follows')
+                    ->join('users', 'following_id', '=', 'users.id')
+                    ->where('follower_id', $user->id)
+                    ->get();                
+    }
+
+    public function followers(user $user)
+    {
+         $followingList = $this->getFollowers($user);
+        return view('users.follower',compact('followingList'));
+    }
+
+    public function getFollowers(User $user)
+    {
+        return DB::table('follows')
+                    ->join('users', 'follower_id', '=', 'users.id')
+                    ->where('following_id', $user->id)
+                    ->get();                
+    }
+
 }
