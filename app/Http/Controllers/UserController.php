@@ -42,4 +42,11 @@ class UserController extends Controller
         return redirect()->back();
        
     }
+
+    public function follow(User $user)
+    {
+        auth()->user()->followings()->attach($user->id);
+        return redirect()->back();
+    }
+
 }

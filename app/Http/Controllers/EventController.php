@@ -14,7 +14,7 @@ class EventController extends Controller
     {
         $events = Event::all() ->sortBy('start_date');
         $participatedEvents = $this->getParticipatedEvents();
-        return view('list-events.list-events', compact('events', 'participatedEvents'));
+        return view('events.list', compact('events', 'participatedEvents'));
     }
     
     public function create()
