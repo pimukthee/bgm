@@ -19,6 +19,15 @@
                                 <button class="btn btn-secondary" type="submit">JOIN</button>
                             </form>
                         @endif
+
+                        @if (auth()->check() && in_array($event->id, $participatedEvents))
+                            <form method="post" action="/events/cancel/{{$event->id}}">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                <button class="btn btn-danger" type="submit">CANCEL</button>
+                            </form>
+                        @endif
+
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>
