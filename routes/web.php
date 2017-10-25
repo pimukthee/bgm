@@ -20,6 +20,7 @@ Route::get('/users', 'UserController@list');
 Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::get('/users/{user}/following', 'UserController@followings');
+Route::get('/users/{user}/followers', 'UserController@followers');
 Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');

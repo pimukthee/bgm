@@ -69,4 +69,9 @@ class UserController extends Controller
                     ->where('follower_id', $user->id)
                     ->get();                
     }
+
+    public function followers(user $user)
+    {
+        return "followers";
+    }
 }
