@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
 
@@ -46,6 +47,12 @@ class UserController extends Controller
     public function follow(User $user)
     {
         auth()->user()->followings()->attach($user->id);
+
+        $user->total_following = $user->total_following + 1;
+        $user->save();
+        auth()->user()->total_follower = auth()->user()->total_follower + 1;
+        auth()->user()->save();
+
         return redirect()->back();
     }
 

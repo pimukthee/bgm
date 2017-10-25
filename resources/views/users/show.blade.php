@@ -31,14 +31,14 @@
                                     <h4>{{$user->total_follower}}<h4>
                                 </div>
 
-                            <div class="stats-title">FOLLOWING</div>
+                            <div class="stats-title">FOLLOWERS</div>
                             </div>
 
                             <div class="col-md-6 col-sm-6 col-xs-12 stats-col">
                                 <div class="stats-value pink">
                                     <h4>{{$user->total_following}}<h4>
                                 </div>
-                            <div class="stats-title">FOLLOWERS</div>
+                            <div class="stats-title">FOLLOWINGS</div>
                         </div>
                     </div>
                 </center>

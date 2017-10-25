@@ -10,7 +10,7 @@ use App\User;
 class EventController extends Controller
 {
     
-    public function fetchEvents()
+    public function fetch()
     {
         if(auth()->check())
         {
