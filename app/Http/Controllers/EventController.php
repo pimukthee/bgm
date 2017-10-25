@@ -12,14 +12,25 @@ class EventController extends Controller
     
     public function fetchEvents()
     {
+        if(auth()->check())
+        {
         $events = Event::all() ->sortBy('start_date');
         $participatedEvents = $this->getParticipatedEvents();
-        return view('events.list', compact('events', 'participatedEvents'));
+        return view('events.lists', compact('events', 'participatedEvents'));
+        }
+        else{
+            return redirect()->home();
+        }
     }
     
     public function create()
     {
         return view('events.create');
+    }
+
+    public function cancel()
+    {
+       
     }
     
     public function store()
