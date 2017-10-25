@@ -26,7 +26,7 @@ Route::post('/users/{user}/follow', 'UserController@follow');
 
 
 Route::get('/events/create', 'EventController@create');
-Route::get('/events/list', 'EventController@fetchEvents');
+Route::get('/events/list', 'EventController@fetch');
 Route::post('/events/store', 'EventController@store');
 Route::post('/join/{event}', 'EventController@join');
 
