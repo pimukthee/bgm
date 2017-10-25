@@ -56,4 +56,9 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function followings(User $user)
+    {
+       return view('users.following');
+    }
+
 }
