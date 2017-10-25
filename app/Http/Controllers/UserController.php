@@ -58,7 +58,15 @@ class UserController extends Controller
 
     public function followings(User $user)
     {
-       return view('users.following');
+       $followingList = $this->getFollowings($user);
+       return view('users.following',compact('followingList'));
     }
 
+    public function getFollowings(User $user)
+    {
+        return DB::table('follows')
+                    ->join('users', 'following_id', '=', 'users.id')
+                    ->where('follower_id', $user->id)
+                    ->get();                
+    }
 }
