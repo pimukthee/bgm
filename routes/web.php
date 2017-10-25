@@ -22,7 +22,7 @@ Route::get('/users/{user}/edit', 'UserController@edit');
 Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
-Route::post('/users/{user}/follow', 'FollowController@follow');
+Route::post('/users/{user}/follow', 'UserController@follow');
 
 
 Route::get('/events/create', 'EventController@create');
