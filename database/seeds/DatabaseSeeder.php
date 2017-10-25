@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             EventsTableSeeder::class,
             GameTableSeeder::class,
             RanksTableSeeder::class,
-            CategoriesTableSeeder::class
+            CategoriesTableSeeder::class,
+            ParticipantsTableSeeder::class
         ]);
     }
 }
