@@ -25,7 +25,7 @@
 
                         <br>
                         
-                        <button class="btn btn-primary">GIVE RANK</button>
+                        <a href="/events/{{$event->id}}/rank" class="btn btn-primary" role="button" aria-disabled="true">Give Rank</a>
 
                     </div>
                     <div class="col col-lg-3">
