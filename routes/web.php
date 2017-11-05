@@ -32,6 +32,7 @@ Route::post('/events/{event}/end', 'EventController@end');
 Route::get('/events/{event}/rank', 'EventController@rank');
 Route::get('/events/create', 'EventController@create');
 Route::get('/events/list', 'EventController@fetch');
+Route::get('/events/recent','EventController@recent');
 Route::post('/events/cancel/{event}', 'EventController@cancel');
 Route::post('/events/store', 'EventController@store');
 Route::post('/join/{event}', 'EventController@join');
@@ -40,6 +41,7 @@ Route::post('/join/{event}', 'EventController@join');
 Route::get('/categories','CategoriesController@show');
 
 Route::get('/games/{game}', 'GameController@show');
+
 
 
 
