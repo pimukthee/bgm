@@ -12,21 +12,20 @@
                     </div>
                     <div class="col-md-auto">
                         <h5>DATE : {{$event->start_date}}</h5>
-                        @if (auth()->check() && !in_array($event->id, $participatedEvents))
-                            <form method="post" action="/join/{{$event->id}}">
+                        
+                        @if (auth()->check() && $event->has_end == "0")
+                            <form method="post" action="/events/{{$event->id}}/end">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
-                                <button class="btn btn-secondary" type="submit">JOIN</button>
+                                <button class="btn btn-danger" type="submit">END</button>
                             </form>
+                        @else
+                            <button class="btn btn-primary" type="submit">END</button>
                         @endif
 
-                        @if (auth()->check() && in_array($event->id, $participatedEvents))
-                            <form method="post" action="/events/cancel/{{$event->id}}">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="event_id" value="{{$event->id}}">
-                                <button class="btn btn-danger" type="submit">CANCEL</button>
-                            </form>
-                        @endif
+                        <br>
+                        
+                        <button class="btn btn-primary">GIVE RANK</button>
 
                     </div>
                     <div class="col col-lg-3">

@@ -28,6 +28,7 @@ Route::post('/users/{user}/follow', 'UserController@follow');
 
 
 Route::get('/events/created', 'EventController@created');
+Route::post('/events/{event}/end', 'EventController@end');
 Route::get('/events/create', 'EventController@create');
 Route::get('/events/list', 'EventController@fetch');
 Route::post('/events/cancel/{event}', 'EventController@cancel');

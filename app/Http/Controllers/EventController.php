@@ -73,4 +73,12 @@ class EventController extends Controller
             return redirect()->home();
         }
     }
+
+    public function end(Event $event)
+    {
+        $event->has_end = true;
+        $event->save();
+        
+        return redirect()->back();
+    }
 }
