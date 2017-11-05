@@ -59,4 +59,18 @@ class EventController extends Controller
             return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
         }
     }
+
+    public function created()
+    {
+        if(auth()->check())
+        {
+        $events = Event::all()  ->sortBy('start_date')  
+                                ->where('user_id', auth()->id());
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('events.created', compact('events', 'participatedEvents'));
+        }
+        else{
+            return redirect()->home();
+        }
+    }
 }
