@@ -1,15 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-<form>
+<form method="post" action='/events/{{$event->id}}/end'>
     {{ csrf_field() }}
     @foreach ($users as $user)
     <div class="form-group">
     <label for="{{$user->id}}">{{$user->name}}</label>
         <select class="form-control" id="{{$user->id}}">
-        @for ($i = 1; $i <= $count; $i++)
-            <option>{{ $i }}</option>
-        @endfor
+            @for ($i = 1; $i <= $count; $i++)
+                <option>{{ $i }}</option>
+            @endfor
         </select>
     </div>
     @endforeach

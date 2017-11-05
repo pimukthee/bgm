@@ -92,6 +92,6 @@ class EventController extends Controller
                 ->where('event_id', $event->id)
                 ->count();  
 
-       return view('events.rank', compact('users', 'count'));
+       return view('events.rank', compact('users', 'count', 'event'));
     }
 }
