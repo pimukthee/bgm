@@ -21,6 +21,7 @@ class CreateEventsTable extends Migration
             $table->integer('min_rank')->default(0);
             $table->integer('max_participants')->default(5);
             $table->string('location');
+            $table->boolean('has_end')->default(false);
             $table->text('description');
             $table->date('start_date');
             $table->timestamps();
