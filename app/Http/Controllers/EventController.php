@@ -81,4 +81,17 @@ class EventController extends Controller
         
         return redirect()->back();
     }
+
+    public function rank(Event $event)
+    {
+        $users = DB::table('participants')
+                ->join('users', 'participants.user_id', '=' , 'users.id')
+                ->where('event_id', $event->id)
+                ->get();     
+        $count = DB::table('participants')
+                ->where('event_id', $event->id)
+                ->count();  
+
+       return view('events.rank', compact('users', 'count'));
+    }
 }
