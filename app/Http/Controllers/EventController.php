@@ -80,7 +80,8 @@ class EventController extends Controller
         $event->has_end = true;
         $event->save();
         $participants = $this->getParticipants($event);
-        return $this->addRecentGames($event, $participants);
+        $this->addRecentGames($event, $participants);
+        return redirect()->home();
     }
     public function rank(Event $event)
     {
@@ -123,8 +124,7 @@ class EventController extends Controller
     {
         foreach ($participants as $participant)
         {
-            return participant;
-            // $participant->recentGames()->attach($event, ['place' => request()->input($participant->name())->key()]);
+            $participant->recentGames()->attach($event, ['place' => request()->input($participant->name)]);
         }
     }
 }
