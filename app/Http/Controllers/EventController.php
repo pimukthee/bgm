@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Event;
 use App\User;
 use App\RecentGame;
+use App\Game;
 
 class EventController extends Controller
 {
@@ -80,7 +81,8 @@ class EventController extends Controller
         $event->has_end = true;
         $event->save();
         $participants = $this->getParticipants($event);
-        $this->addRecentGames($event, $participants);
+        return $this->giveRank($event, $participants);
+        // $this->addRecentGames($event, $participants);
         return redirect()->home();
     }
     public function rank(Event $event)
@@ -113,7 +115,6 @@ class EventController extends Controller
             return redirect()->home();
         }
     }
-            
 
     private function getParticipants(Event $event)
     {
@@ -124,7 +125,27 @@ class EventController extends Controller
     {
         foreach ($participants as $participant)
         {
-            $participant->recentGames()->attach($event, ['place' => request()->input($participant->name)]);
+            $participant->recentGames()->attach($event, ['place' => request()->input($participant->id)]);
         }
+    }
+
+    private function giveRank($event, $participants)
+    {
+        $game = $event -> game;
+        $numberOfParticipants = count($participants);
+        foreach ($participants as $participant)
+        {
+            $score = (request()->input($participant->id) - 1 + $numberOfParticipants) * 1000;
+            $hasRank = $participant->games->contains($game->id);
+            if ($hasRank)
+            {
+                $participant->games()->updateExistingPivot($game->id, ['score'  => $score]);
+            }
+            else
+            {
+                $participant->games()->attach($game->id, ['score'  => $score]);
+            }
+        }
+        return redirect()->home();
     }
 }

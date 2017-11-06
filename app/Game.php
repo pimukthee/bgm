@@ -16,4 +16,8 @@ class Game extends Model
     {
         return $this->belongsToMany(User::class, 'ranks', 'game_id', 'user_id');
     }
+
+    public function event(){
+        return $this->hasOne(Event::class);
+    }
 }

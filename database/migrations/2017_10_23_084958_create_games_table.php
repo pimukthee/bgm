@@ -16,7 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('categories_id')->references('id')->on('categories')->onDelete('cascade');;
+            $table->integer('categories_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('icon');
             $table->string('cover_picture');
             $table->text('rule');

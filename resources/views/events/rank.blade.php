@@ -6,7 +6,7 @@
     @foreach ($users as $user)
     <div class="form-group">
     <label for="{{$user->id}}">{{$user->name}}</label>
-        <select class="form-control" id="{{$user->id}}" name="{{$user->name}}">
+        <select class="form-control" id="{{$user->id}}" name="{{$user->id}}">
             @for ($i = 1; $i <= $count; $i++)
                 <option>{{ $i }}</option>
             @endfor
