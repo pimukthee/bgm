@@ -79,16 +79,15 @@ class EventController extends Controller
     {
         $event->has_end = true;
         $event->save();
-        
-        return redirect()->back();
+        $participants = $this->getParticipants($event);
+        return $this->addRecentGames($event, $participants);
     }
-
     public function rank(Event $event)
     {
         $users = DB::table('participants')
                 ->join('users', 'participants.user_id', '=' , 'users.id')
                 ->where('event_id', $event->id)
-                ->get();     
+                ->get();
         $count = DB::table('participants')
                 ->where('event_id', $event->id)
                 ->count();  
@@ -100,16 +99,32 @@ class EventController extends Controller
     {
         if(auth()->check())
         {
-        $recentGames = DB::table('recent_games')
-                        ->join('events', 'recent_games.event_id', '=', 'events.id')
-                        ->where('has_end', '=', '1')
-                        ->get();
+            $recentGames = DB::table('recent_games')
+                            ->join('events', 'recent_games.event_id', '=', 'events.id')
+                            ->where('has_end', '=', '1')
+                            ->get();
 
-        $participatedEvents = $this->getParticipatedEvents();
-        return view('events.recent', compact('recentGames', 'participatedEvents'));
+            $participatedEvents = $this->getParticipatedEvents();
+            return view('events.recent', compact('recentGames', 'participatedEvents'));
         }
-        else{
+        else
+        {
             return redirect()->home();
+        }
+    }
+            
+
+    private function getParticipants(Event $event)
+    {
+        return $event->participants()->get();
+    }
+
+    private function addRecentGames($event, $participants)
+    {
+        foreach ($participants as $participant)
+        {
+            return participant;
+            // $participant->recentGames()->attach($event, ['place' => request()->input($participant->name())->key()]);
         }
     }
 }
