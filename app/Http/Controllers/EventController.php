@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Event;
 use App\User;
+use App\RecentGame;
 
 class EventController extends Controller
 {
@@ -93,5 +94,22 @@ class EventController extends Controller
                 ->count();  
 
        return view('events.rank', compact('users', 'count'));
+    }
+    
+    public function recent()
+    {
+        if(auth()->check())
+        {
+        $recentGames = DB::table('recent_games')
+                        ->join('events', 'recent_games.event_id', '=', 'events.id')
+                        ->where('has_end', '=', '1')
+                        ->get();
+
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('events.recent', compact('recentGames', 'participatedEvents'));
+        }
+        else{
+            return redirect()->home();
+        }
     }
 }
