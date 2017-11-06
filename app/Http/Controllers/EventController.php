@@ -100,8 +100,13 @@ class EventController extends Controller
     {
         if(auth()->check())
         {
-        $recentGames = RecentGame::all();
-        return view('events.recent', compact('recentGames'));
+        $recentGames = DB::table('recent_games')
+                        ->join('events', 'recent_games.event_id', '=', 'events.id')
+                        ->where('has_end', '=', '1')
+                        ->get();
+
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('events.recent', compact('recentGames', 'participatedEvents'));
         }
         else{
             return redirect()->home();
