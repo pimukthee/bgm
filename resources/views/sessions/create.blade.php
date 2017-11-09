@@ -13,7 +13,8 @@
                 <label for="password">Password:</label>
                 <input type="password" class="form-control" name="password" id="password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-primary">Log in</button>
+            <a href="/register" class="btn btn-primary btn" role="button" aria-pressed="true">Register</a>
         </form>
     </div>
 @endsection
