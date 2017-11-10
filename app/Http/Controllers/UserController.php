@@ -16,7 +16,13 @@ class UserController extends Controller
 
     public function show(User $user) 
     {
-        return view('users.show', compact('user'));
+        $ranks = DB::table('ranks')
+                    ->select('games.name', 'ranks.score')
+                    ->join('games', 'game_id', '=', 'games.id')
+                    ->where('user_id', $user->id)
+                    ->get()
+                    ->toArray();
+        return view('users.show', compact('user','ranks'));
     }
 
     public function edit(User $user) 
