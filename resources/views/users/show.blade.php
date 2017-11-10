@@ -54,13 +54,13 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 space">
                             <h4>RANKING</h4>
                             <div class="row">
-                                <div class="col-md-6 col-sm-6 col-xs-6">
-                                    <h5>YU_GI_OH</h5>
-                                    <h5>1500</h5>
+                            @foreach ($ranks as $rank)
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <h5>{{$rank->name}}</h5>
+                                    <h5>{{$rank->score}}</h5>
+                                </div>
+                            @endforeach
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-6">
-                                <h5>WAREWOLF</h5>
-                                <h5>1800</h5>
                         </div>
                     </div>
                 </div>
@@ -68,20 +68,14 @@
                 <div class="col-md-12 col-sm-12 col-xs-12 space">
                     <h4>LATEST COMPETITIONS</h4>
                     <div class="row">
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <h6>EVEVNT: AAAAA </h6>
-                            <h6>DATE: XX/XXXXX/XXX </h6>
-                            <h6>LOCATION: Lorem ipsum, dolor sit amet consectetur </h6>
+                    @foreach($lastGames as $lastGame)
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <h6>GAME: {{$lastGame->name}}</h6>
                         </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <h5>WITH</h5>
-                            <li>jlsafkjasdhf</li>
-                            <li>jlsafkjasdhf</li>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <h5>RESULT:  {{$lastGame->place}}</h5>
                         </div>
-                        <div class="col-md-4 col-sm-12 col-xs-12">
-                            <h5>RESULT</h5>
-                                
-                        </div>
+                    @endforeach
                     </div>
                 </div>
             </div>
