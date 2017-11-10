@@ -22,7 +22,15 @@ class UserController extends Controller
                     ->where('user_id', $user->id)
                     ->get()
                     ->toArray();
-        return view('users.show', compact('user','ranks'));
+
+        $lastGames = DB::table('recent_games')
+                            ->select('games.name', 'recent_games.place','recent_games.user_id')
+                            ->join('events', 'recent_games.event_id', '=', 'events.id')
+                            ->join('games', 'games.id', '=', 'events.game_id')
+                            ->groupBy('events.game_id')
+                            ->having('recent_games.user_id', '=', 1)
+                            ->get();
+        return view('users.show', compact('user','ranks', 'lastGames'));
     }
 
     public function edit(User $user) 
