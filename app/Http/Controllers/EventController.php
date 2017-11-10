@@ -81,8 +81,8 @@ class EventController extends Controller
         $event->has_end = true;
         $event->save();
         $participants = $this->getParticipants($event);
-        return $this->giveRank($event, $participants);
-        // $this->addRecentGames($event, $participants);
+        $this->giveRank($event, $participants);
+        $this->addRecentGames($event, $participants);
         return redirect()->home();
     }
     public function rank(Event $event)
