@@ -30,7 +30,7 @@ Route::post('/users/{user}/follow', 'UserController@follow');
 Route::get('/events/created', 'EventController@created');
 Route::get('/events/{event}/rank', 'EventController@rank');
 Route::get('/events/create', 'EventController@create');
-Route::get('/events/list', 'EventController@fetch');
+Route::get('/events', 'EventController@fetch');
 Route::get('/events/recent','EventController@recent');
 Route::post('/events/{event}/end', 'EventController@end');
 Route::post('/events/cancel/{event}', 'EventController@cancel');
