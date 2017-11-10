@@ -52,6 +52,12 @@ class EventController extends Controller
         return redirect()->home();
     }
     
+    public function showAtHome()
+    {
+        $events= Event::all() ->sortByDesc('start_date')->take(5);
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('welcome', compact('events', 'participatedEvents'));
+    }
     
     private function getParticipatedEvents()
     {
