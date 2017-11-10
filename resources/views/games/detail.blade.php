@@ -10,9 +10,8 @@
                 </div>
 
                 <div class="col-md-10 col-sm-10 profile-info">
-                    <h1 style="margin: 30px 0px 0px 0px;">MONOPOLY</h1>
+                    <h1 style="margin: 30px 0px 0px 0px;">{{$game->name}}</h1>
                     <span class="badge badge-pill badge-primary">BOARD</span>
-                    <span class="badge badge-pill badge-danger">STATEGY</span>
                 </div>
 
                 <div class="col-md-6 col-sm-6 col-xs-6 ">
@@ -30,7 +29,7 @@
                                             </div>
 
                                             <div class="col-4">
-                                                <h3 style="margin: 30px 0px 0px 0px;">{{$user->name}}</h3>
+                                                <a href="/users/{{$user->id}}"><h3 style="margin: 30px 0px 0px 0px;">{{$user->name}}</h3></a>
                                                 <h4 style="margin: 30px 0px 0px 0px;">{{$user->score}}</h4>
                                             </div>
 

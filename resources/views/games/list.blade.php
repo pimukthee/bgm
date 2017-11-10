@@ -10,7 +10,7 @@
                         <h1 class="card-title">{{$category -> game_type}}</h1>
                         @foreach($games as $game)
                             @if($game -> categories_id == $category -> id )
-                                <li><a href=#>{{$game -> name}}</a></li>
+                                <li><a href="/games/{{$game -> id}}">{{$game -> name}}</a></li>
                             @endif 
                         @endforeach
                     </div>

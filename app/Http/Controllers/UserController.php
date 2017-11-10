@@ -16,7 +16,21 @@ class UserController extends Controller
 
     public function show(User $user) 
     {
-        return view('users.show', compact('user'));
+        $ranks = DB::table('ranks')
+                    ->select('games.name', 'ranks.score')
+                    ->join('games', 'game_id', '=', 'games.id')
+                    ->where('user_id', $user->id)
+                    ->get()
+                    ->toArray();
+
+        $lastGames = DB::table('recent_games')
+                            ->select('games.name', 'recent_games.place','recent_games.user_id')
+                            ->join('events', 'recent_games.event_id', '=', 'events.id')
+                            ->join('games', 'games.id', '=', 'events.game_id')
+                            ->groupBy('events.game_id')
+                            ->having('recent_games.user_id', '=', 1)
+                            ->get();
+        return view('users.show', compact('user','ranks', 'lastGames'));
     }
 
     public function edit(User $user) 
@@ -48,9 +62,9 @@ class UserController extends Controller
     {
         auth()->user()->followings()->attach($user->id);
 
-        $user->total_following = $user->total_following + 1;
+        $user->total_follower = $user->total_follower + 1;
         $user->save();
-        auth()->user()->total_follower = auth()->user()->total_follower + 1;
+        auth()->user()->total_following = auth()->user()->total_following + 1;
         auth()->user()->save();
 
         return redirect()->back();

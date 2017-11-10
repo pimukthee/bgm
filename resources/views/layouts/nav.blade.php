@@ -11,12 +11,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/categories">Categories</a>
             </li>
+            @if(Auth::check())
             <li class="nav-item">
             <a class="nav-link" href="/events/create">CreateEvent</a>
-            </li>
+            </li>          
             <li class="nav-item">
             <a class="nav-link" href="/profile">Profile</a>
             </li>
+            @endif
         </ul>
         <form class="form-inline mt-2 mt-md-0">
             <input class="form-control mr-sm-2" placeholder="Search" type="text">

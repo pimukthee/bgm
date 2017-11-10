@@ -35,5 +35,6 @@
 
 
         <button class="btn btn-primary" type="submit">Register</button>
+        <a href="/login" class="btn btn-primary btn" role="button" aria-pressed="true">Log in</a>
     </form>
 @endsection
