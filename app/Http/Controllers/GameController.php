@@ -19,7 +19,7 @@ class GameController extends Controller
     private function fetchTopTenPlayers($game)
     {
         return DB::table('ranks')
-                    ->select('users.name', 'ranks.score')
+                    ->select('users.name', 'ranks.score','users.id')
                     ->join('users', 'user_id', '=', 'users.id')
                     ->where('game_id', $game->id)
                     ->take(10)
