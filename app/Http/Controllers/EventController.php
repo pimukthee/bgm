@@ -47,29 +47,20 @@ class EventController extends Controller
         return redirect()->home();
     }
     
-    
-    private function getParticipatedEvents()
-    {
-        if (auth()->check())
-        {
-            return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
-        }
-    }
-
     public function created()
     {
         if(auth()->check())
         {
-        $events = Event::all()  ->sortBy('start_date')  
-                                ->where('user_id', auth()->id());
-        $participatedEvents = $this->getParticipatedEvents();
-        return view('events.created', compact('events', 'participatedEvents'));
+            $events = Event::all()  ->sortBy('start_date')  
+            ->where('user_id', auth()->id());
+            $participatedEvents = $this->getParticipatedEvents();
+            return view('events.created', compact('events', 'participatedEvents'));
         }
         else{
             return redirect()->home();
         }
     }
-
+    
     public function end(Event $event)
     {
         $event->has_end = true;
@@ -79,17 +70,18 @@ class EventController extends Controller
         $this->addRecentGames($event, $participants);
         return redirect()->home();
     }
+
     public function rank(Event $event)
     {
         $users = DB::table('participants')
-                ->join('users', 'participants.user_id', '=' , 'users.id')
-                ->where('event_id', $event->id)
-                ->get();
+        ->join('users', 'participants.user_id', '=' , 'users.id')
+        ->where('event_id', $event->id)
+        ->get();
         $count = DB::table('participants')
-                ->where('event_id', $event->id)
-                ->count();  
-
-       return view('events.rank', compact('users', 'count', 'event'));
+        ->where('event_id', $event->id)
+        ->count();  
+        
+        return view('events.rank', compact('users', 'count', 'event'));
     }
     
     public function recent()
@@ -97,10 +89,10 @@ class EventController extends Controller
         if(auth()->check())
         {
             $recentGames = DB::table('recent_games')
-                            ->join('events', 'recent_games.event_id', '=', 'events.id')
-                            ->where('has_end', '=', '1')
-                            ->get();
-
+            ->join('events', 'recent_games.event_id', '=', 'events.id')
+            ->where('has_end', '=', '1')
+            ->get();
+            
             $participatedEvents = $this->getParticipatedEvents();
             return view('events.recent', compact('recentGames', 'participatedEvents'));
         }
@@ -110,11 +102,17 @@ class EventController extends Controller
         }
     }
 
+    public function participants(Event $event)
+    {
+        return $event->participants;
+    }
+    
+
     private function getParticipants(Event $event)
     {
         return $event->participants()->get();
     }
-
+    
     private function addRecentGames($event, $participants)
     {
         foreach ($participants as $participant)
@@ -122,7 +120,7 @@ class EventController extends Controller
             $participant->recentGames()->attach($event, ['place' => request()->input($participant->id)]);
         }
     }
-
+    
     private function giveRank($event, $participants)
     {
         $game = $event -> game;
@@ -141,5 +139,13 @@ class EventController extends Controller
             }
         }
         return redirect()->home();
+    }
+
+    private function getParticipatedEvents()
+    {
+        if (auth()->check())
+        {
+            return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
+        }
     }
 }
