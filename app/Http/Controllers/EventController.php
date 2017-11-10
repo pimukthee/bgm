@@ -104,7 +104,8 @@ class EventController extends Controller
 
     public function participants(Event $event)
     {
-        return $event->participants;
+        $users = $event->participants;
+        return view('events.participants', compact('users'));
     }
     
 
