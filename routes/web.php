@@ -32,6 +32,7 @@ Route::get('/events/{event}/rank', 'EventController@rank');
 Route::get('/events/create', 'EventController@create');
 Route::get('/events', 'EventController@fetch');
 Route::get('/events/recent','EventController@recent');
+Route::get('/events/{event}/participants', 'EventController@participants');
 Route::post('/events/{event}/end', 'EventController@end');
 Route::post('/events/cancel/{event}', 'EventController@cancel');
 Route::post('/events/store', 'EventController@store');
