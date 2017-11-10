@@ -63,7 +63,7 @@ class User extends Authenticatable
         $this->events()->save($event);
     }
 
-    public function recentGame()
+    public function recentGames()
     {
         return $this->belongsToMany(Event::class,'recent_games','user_id','event_id');
     }
