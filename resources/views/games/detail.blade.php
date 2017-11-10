@@ -30,7 +30,7 @@
                                             </div>
 
                                             <div class="col-4">
-                                                <h3 style="margin: 30px 0px 0px 0px;">{{$user->name}}</h3>
+                                                <a href="/users/{{$user->id}}"><h3 style="margin: 30px 0px 0px 0px;">{{$user->name}}</h3></a>
                                                 <h4 style="margin: 30px 0px 0px 0px;">{{$user->score}}</h4>
                                             </div>
 

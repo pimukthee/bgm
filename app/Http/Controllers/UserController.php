@@ -48,9 +48,9 @@ class UserController extends Controller
     {
         auth()->user()->followings()->attach($user->id);
 
-        $user->total_following = $user->total_following + 1;
+        $user->total_follower = $user->total_follower + 1;
         $user->save();
-        auth()->user()->total_follower = auth()->user()->total_follower + 1;
+        auth()->user()->total_following = auth()->user()->total_following + 1;
         auth()->user()->save();
 
         return redirect()->back();
