@@ -8,7 +8,7 @@
                 <div class="card col-10">
                 <div class="row">
                     <div class="col">
-                        <li><b> {{$user->name}}</b></li>
+                        <li><a href="/users/{{$user->id}}"><b> {{$user->name}}</b></a></li>
                     </div>
                     
                    
