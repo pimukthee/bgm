@@ -17,6 +17,11 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-secondary" type="submit">JOIN</button>
+                            </form> 
+                            <form method="get" action="/events/{{$event->id}}/participants">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
                             </form>
                         @endif
 
@@ -27,7 +32,6 @@
                                 <button class="btn btn-danger" type="submit">CANCEL</button>
                             </form>
                         @endif
-
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>
