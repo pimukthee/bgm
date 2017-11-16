@@ -19,6 +19,11 @@
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-danger" type="submit">END</button>
                             </form>
+                            <form method="post" action="/events/{{$event->id}}/delete">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                <button class="btn btn-danger" type="submit">DELETE</button>
+                            </form>
                         @else
                             <button class="btn btn-primary" type="submit">END</button>
                         @endif

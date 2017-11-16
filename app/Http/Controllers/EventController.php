@@ -149,6 +149,13 @@ class EventController extends Controller
         return redirect()->home();
     }
 
+    public function delete(Event $event)
+    {
+        $event->delete();
+        return redirect()->home();
+    }
+
+
     private function getParticipatedEvents()
     {
         if (auth()->check())
