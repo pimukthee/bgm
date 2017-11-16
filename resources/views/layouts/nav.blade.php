@@ -28,7 +28,7 @@
             {{ csrf_field() }}
             <input class="form-control mr-sm-2" placeholder="Search" type="text" name="word">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </<form>
+        </form>
         @if(Auth::check())
             <a class="btn btn-outline-success" href="/logout">Log out</a>
         @else
