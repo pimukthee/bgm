@@ -10,21 +10,21 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="./img/game1.png" alt="First slide" height="100%">
+                    <img class="d-block w-100" src="./img/game1.jpg" alt="First slide" height="100%">
                     <div class="carousel-caption d-md-block carousel-text">
                       <p style="font-size:40px">Let's play!</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/game2.png" alt="Second slide" height="100%">
+                    <img class="d-block w-100" src="./img/game2.jpg" alt="Second slide" height="100%">
                     <div class="carousel-caption d-md-block carousel-text">
                       <p style="font-size:40px">Let's play!</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     </div>              
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="./img/game3.png" alt="Third slide" height="100%">
+                    <img class="d-block w-100" src="./img/game3.jpg" alt="Third slide" height="100%">
                     <div class="carousel-caption d-md-block carousel-text">
                       <p style="font-size:40px">Let's play!</p>
                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
