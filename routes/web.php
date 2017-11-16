@@ -43,6 +43,5 @@ Route::get('/categories','CategoriesController@show');
 
 Route::get('/games/{game}', 'GameController@show');
 
-
-
+Route::post('/search', 'SearchController@search');
 
