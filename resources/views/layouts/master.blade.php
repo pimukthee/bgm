@@ -15,6 +15,19 @@
     </head>
     <body>
         @include('layouts.nav')
+
+        @if ($flash = session('logout_message'))
+            <div class="alert alert-danger" role="alert" id="flash-message">
+                {{$flash}}
+            </div>
+        @endif
+
+        @if ($flash = session('login_message'))
+            <div class="alert alert-success" role="alert" id="flash-message">
+                {{$flash}}
+            </div>
+        @endif
+
         <div class="container-fluid">
             @yield('content')
         </div>
