@@ -34,6 +34,7 @@ Route::get('/events', 'EventController@fetch');
 Route::get('/events/recent','EventController@recent');
 Route::get('/events/{event}/participants', 'EventController@participants');
 Route::post('/events/{event}/end', 'EventController@end');
+Route::post('/events/{event}/delete', 'EventController@delete');
 Route::post('/events/cancel/{event}', 'EventController@cancel');
 Route::post('/events/store', 'EventController@store');
 Route::post('/join/{event}', 'EventController@join');
