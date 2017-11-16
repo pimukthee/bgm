@@ -18,12 +18,14 @@ class SessionController extends Controller
             return view('sessions.create') -> with('title', request('password'));
         }
 
+        session()->flash('login_message', 'Login Successfully!');
         return redirect() -> home();
     }
 
     public function destroy()
     {
         auth()->logout();
-        return back();
+        session()->flash('logout_message', 'You has been logout.');
+        return redirect()->home();
     }
 }
