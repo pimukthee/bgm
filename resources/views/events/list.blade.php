@@ -23,6 +23,11 @@
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
                             </form>
+                            <form method="post" action="/events/delete">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                <button class="btn btn-danger" type="submit">DELETE</button>
+                            </form>
                         @endif
 
                         @if (auth()->check() && in_array($event->id, $participatedEvents))
