@@ -12,15 +12,15 @@
                 <a class="nav-link" href="/categories">Categories</a>
             </li>
             @if(Auth::check())
-            <li class="nav-item">
-            <a class="nav-link" href="/events/create">CreateEvent</a>
-            </li>          
-            <li class="nav-item">
-            <a class="nav-link" href="/users/">Users</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="/events/created">Created</a>
-            </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/events/create">CreateEvent</a>
+                </li>          
+                <li class="nav-item">
+                <a class="nav-link" href="/users/">Users</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/events/created">Created</a>
+                </li>
             @endif
         </ul>
         
@@ -28,7 +28,7 @@
             {{ csrf_field() }}
             <input class="form-control mr-sm-2" placeholder="Search" type="text" name="word">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </<form>
+        </form>
         @if(Auth::check())
             <a class="btn btn-outline-success" href="/logout">Log out</a>
         @else
