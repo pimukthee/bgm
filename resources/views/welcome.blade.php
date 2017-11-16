@@ -81,9 +81,7 @@
     </div>
     @endforeach
     <div class="card-footer">
-        <button type="button" class="btn btn-primary btn-lg btn-block">
-            See more
-        </button>
+        <a href="/events" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">See More</a>
     </div>
 
   
