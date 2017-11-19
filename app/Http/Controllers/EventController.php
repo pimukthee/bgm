@@ -18,7 +18,7 @@ class EventController extends Controller
         $participatedEvents = $this->getParticipatedEvents();
         return view('events.list', compact('events', 'participatedEvents'));
     }
-    
+
     public function create()
     {
         return view('events.create');
