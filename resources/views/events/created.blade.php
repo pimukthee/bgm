@@ -19,13 +19,12 @@
                             <p>Required Rank: {{$event->min_rank}}</p>
                             <p>Max participants: {{$event->max_participants}}</p>
                             </div>
-
                         </div>    
                 </div>
                 <div class="col col-lg-3">
                     <h4><b>Host: {{$event->user->name}}</b></h4>
                     @if (auth()->check() && $event->has_end == "0")
-                            <form method="post" action="/events/{{$event->id}}/end">
+                            <form method="get" action="/events/{{$event->id}}/rank">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-danger" type="submit">END</button>
