@@ -21,23 +21,23 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::get('/users/{user}/following', 'UserController@followings');
 Route::get('/users/{user}/followers', 'UserController@followers');
-Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::post('/users/{user}/follow', 'UserController@follow');
 Route::post('/users/{user}/unfollow', 'UserController@unfollow');
+Route::post('/users/{user}/update', 'UserController@update');
 
-Route::get('/events/{event}', 'EventController@show');
+Route::get('/events/create', 'EventController@create');
 Route::get('/events/created', 'EventController@created');
 Route::get('/events/{event}/rank', 'EventController@rank');
-Route::get('/events/create', 'EventController@create');
 Route::get('/events', 'EventController@fetch');
 Route::get('/events/recent','EventController@recent');
 Route::get('/events/{event}/participants', 'EventController@participants');
+Route::get('/events/{event}', 'EventController@show');
+Route::post('/events/store', 'EventController@store');
 Route::post('/events/{event}/end', 'EventController@end');
 Route::post('/events/{event}/delete', 'EventController@delete');
 Route::post('/events/cancel/{event}', 'EventController@cancel');
-Route::post('/events/store', 'EventController@store');
 Route::post('/join/{event}', 'EventController@join');
 
 
