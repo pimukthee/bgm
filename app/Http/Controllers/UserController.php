@@ -30,7 +30,14 @@ class UserController extends Controller
                             ->groupBy('events.game_id')
                             ->having('recent_games.user_id', '=', 1)
                             ->get();
-        return view('users.show', compact('user','ranks', 'lastGames'));
+
+        $follow = DB::table('follows')
+                             ->select('following_id')
+                            ->where('follower_id', auth()->id())
+                            ->where('following_id', $user->id)
+                            ->count();
+                     
+        return view('users.show', compact('user','ranks', 'lastGames', 'follow'));
     }
 
     public function edit(User $user) 
@@ -70,7 +77,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function follow(User $user)
+    public function unfollow(User $user)
     {
         auth()->user()->followings()->detach($user->id);
 

@@ -12,18 +12,19 @@
 
                     <h1>{{$user->name}}</h1>
                     @if(Auth::check() and $user->name != Auth::user()->name)
-
+                         @if($follow == 0)
                         <form method="post" action="/users/{{$user->id}}/follow">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <input class="btn btn-secondary" type="button" value="Follow" onclick="return change(this);" />
+                                <button class="btn btn-primary" type="submit">Follow</button>
                         </form>
-
+                        @else
                         <form method="post" action="/users/{{$user->id}}/unfollow">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <input class="btn btn-secondary" type="button" value="Follow" onclick="return change(this);" />
+                                <button class="btn btn-primary" type="submit">Unf`ollow</button>
                         </form>
+                        @endif
 
                     @endif
 
