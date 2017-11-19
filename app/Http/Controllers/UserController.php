@@ -70,6 +70,18 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function follow(User $user)
+    {
+        auth()->user()->followings()->detach($user->id);
+
+        $user->total_follower = $user->total_follower - 1;
+        $user->save();
+        auth()->user()->total_following = auth()->user()->total_following - 1;
+        auth()->user()->save();
+
+        return redirect()->back();
+    }
+    
     public function followings(User $user)
     {
        $followingList = $this->getFollowings($user);
