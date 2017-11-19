@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class SearchController extends Controller
 {
     public function search() {
-       
+        $this->validate(request(), [
+            'word' => 'required',
+        ]);
+        
         $word=  request('word');
         $users = DB::table('users')
             ->select('name', 'id')
