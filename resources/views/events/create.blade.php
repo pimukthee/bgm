@@ -23,7 +23,7 @@
                 <input type="text" class="form-control" id="datePicker" name="start_date">
             </div>
             <p id="dateHelpBlock" class="form-text text-muted">
-                yyyy-mm-dd hh:mm:ss
+                yyyy-mm-dd hh:mm
             </p>
         </div>
 
@@ -41,11 +41,11 @@
           <label for="inputdefault">Description</label>
           <input class="form-control" id="inputdefault" type="text" name="description">
          </div>
-
-          <button type="submit" class="btn btn-primary">Submit</button>
-
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </form>  
    
     </div>
-
+    @include('layouts.errors')
 @endsection
