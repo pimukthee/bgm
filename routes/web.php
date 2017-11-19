@@ -26,7 +26,7 @@ Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::post('/users/{user}/follow', 'UserController@follow');
 
-
+Route::get('/events/{event}', 'EventController@show');
 Route::get('/events/created', 'EventController@created');
 Route::get('/events/{event}/rank', 'EventController@rank');
 Route::get('/events/create', 'EventController@create');
