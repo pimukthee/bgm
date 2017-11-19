@@ -20,7 +20,7 @@
                 <div class="card col-10">
                 <div class="row">
                     <div class="col">
-                        <li><a href="/events"><b> {{$event->name}}</b></a></li>
+                        <li><a href="/events/{{$event->id}}"><b> {{$event->name}}</b></a></li>
                     </div>
                 </div>
             </div>
