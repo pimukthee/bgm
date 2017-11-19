@@ -13,7 +13,7 @@
                     <hr>
                     <label for="name">Name: </label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="registerName" placeholder="Name" name="name" value="{{$user->name}}">
+                        <input type="text" class="form-control" id="registerName" placeholder="Name" name="name" value="{{$user->name}}" required>
                     </div>
 
                     <label for="exampleFormControlTextarea1">About Me</label>
