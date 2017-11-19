@@ -5,21 +5,21 @@
         <div class="row card-space">
             <div class="col-1"></div>
                 <div class="card col-10">
-                <div class="row">
-                    <div class="col">
-                        <h4><b>EVENT: {{$event->name}}</b></h4>
-                        <p>{{$event->description}}</p>
-                        <h5>Location: {{$event->location}}</h5>
-                    </div>
-                    <div class="col-md-auto">
-                        <h5>DATE : {{$event->start_date}}</h5>
-                            <div class="row">
-                                <div class="col-md-11">
-                                <p>Required Rank: {{$event->min_rank}}</p>
-                                <p>Max participants: {{$event->max_participants}}</p>
-                                </div>
- 
-                            </div>    
+                  <div class="row">
+                      <div class="col">
+                          <h4><b>EVENT: {{$event->name}}</b></h4>
+                          <p>{{$event->description}}</p>
+                          <h5>Location: {{$event->location}}</h5>
+                      </div>
+                      <div class="col-md-auto">
+                          <h5>DATE : {{$event->start_date}}</h5>
+                              <div class="row">
+                                  <div class="col-md-11">
+                                    <p>Required Rank: {{$event->min_rank}}</p>
+                                    <p>Max participants: {{$event->max_participants}}</p>
+                                  </div>
+                              </div> 
+                      </div>    
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>Host: {{$event->user->name}}</b></h4>
