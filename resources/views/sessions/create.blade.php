@@ -14,7 +14,7 @@
                 <input type="password" class="form-control" name="password" id="password">
             </div>
             <button type="submit" class="btn btn-primary">Log in</button>
-            <a href="/register" class="btn btn-primary btn" role="button" aria-pressed="true">Register</a>
+            <a href="/register" aria-pressed="true"> (I don't have an account.)</a>
         </form>
     </div>
 @endsection
