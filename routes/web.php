@@ -25,6 +25,7 @@ Route::post('/users/{user}/update', 'UserController@update');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::post('/users/{user}/follow', 'UserController@follow');
+Route::post('/users/{user}/unfollow', 'UserController@unfollow');
 
 Route::get('/events/{event}', 'EventController@show');
 Route::get('/events/created', 'EventController@created');
