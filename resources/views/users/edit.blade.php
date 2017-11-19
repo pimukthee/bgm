@@ -9,24 +9,11 @@
                 <div class="col-md-12 col-sm-12 profile-info">
                 <form method="POST" action="{{ URL::to('/users/' . $user->id . '/update')}}">
                     {{ csrf_field() }}
-
                     <h1>Edit Profile</h1>
-
                     <hr>
-
                     <label for="name">Name: </label>
                     <div class="form-group">
-                        <input type="text" class="form-control" id="registerName" placeholder="Name" name="name" value="{{$user->name}}">
-                    </div>
-
-                    <label for="username">Username:</label>
-                    <div class="form-group">
-                        <input type="username" class="form-control" id="username" placeholder="Username" name="username" value="{{$user->username}}">
-                    </div>
-
-                    <label for="email">Email: </label>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email" placeholder="Email" name="email" value="{{$user->email}}">
+                        <input type="text" class="form-control" id="registerName" placeholder="Name" name="name" value="{{$user->name}}" required>
                     </div>
 
                     <label for="exampleFormControlTextarea1">About Me</label>
@@ -38,4 +25,5 @@
             </div>
 </div>
 @endif
+@include('layouts.errors')
 @endsection

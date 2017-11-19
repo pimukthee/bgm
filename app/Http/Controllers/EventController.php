@@ -8,6 +8,7 @@ use App\Event;
 use App\User;
 use App\RecentGame;
 use App\Game;
+use App\Rules\DateFormat;
 
 class EventController extends Controller
 {
@@ -47,6 +48,12 @@ class EventController extends Controller
     
     public function store()
     {
+        $this->validate(request(), [
+            'name' => 'required',
+            'start_date' => new DateFormat,
+            'location' => 'required',
+            'min_rank' => 'required'
+        ]);
         $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
 
         auth()->user()->createEvent($event);
