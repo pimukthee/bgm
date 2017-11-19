@@ -15,7 +15,7 @@ class EventController extends Controller
     
     public function fetch()
     {
-        $events = Event::all() ->sortBy('start_date');
+        $events = Event::all()->sortBy('start_date')->where('has_end', 0);
         $events = $this->zipNumberOfParticipant($events);
         $participatedEvents = $this->getParticipatedEvents();
         return view('events.list', compact('events', 'participatedEvents'));
@@ -67,7 +67,7 @@ class EventController extends Controller
     
     public function showAtHome()
     {
-        $events= Event::all() ->sortByDesc('start_date')->take(5);
+        $events= Event::all()->sortByDesc('start_date')->where('has_end', 0)->take(5);
         $events = $this->zipNumberOfParticipant($events);
         $participatedEvents = $this->getParticipatedEvents();
         return view('welcome', compact('events', 'participatedEvents'));
@@ -183,7 +183,6 @@ class EventController extends Controller
             return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
         }
     }
-
 
     private function zipNumberOfParticipant($events)
     {
