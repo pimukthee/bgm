@@ -7,11 +7,11 @@
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" class="form-control" name="username" id="username">
+                <input type="text" class="form-control" name="username" id="username" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" class="form-control" name="password" id="password">
+                <input type="password" class="form-control" name="password" id="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Log in</button>
             <a href="/register" aria-pressed="true"> (I don't have an account.)</a>
