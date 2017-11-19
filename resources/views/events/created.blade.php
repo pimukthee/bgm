@@ -1,4 +1,4 @@
-@extends('layouts/master')
+@extends('layouts.master')
 
 @section('content')
 @foreach ($events as $event)
@@ -25,7 +25,7 @@
                 <div class="col col-lg-3">
                     <h4><b>Host: {{$event->user->name}}</b></h4>
                     @if (auth()->check() && $event->has_end == "0")
-                            <form method="post" action="/events/{{$event->id}}/rank">
+                            <form method="post" action="/events/{{$event->id}}/end">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-danger" type="submit">END</button>
@@ -36,18 +36,7 @@
                                 <button class="btn btn-danger" type="submit">DELETE</button>
                             </form>
                         @endif
-<<<<<<< HEAD
-
-                        <br>
-                    </div>
-                    <div class="col col-lg-3">
-                        <h4><b>{{$event->user->name}}</b></h4>
-                        <p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p>
-                    </div>
-                </div>
-=======
                     <p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p>
->>>>>>> develop
                 </div>
             </div>
             </div>
@@ -55,4 +44,3 @@
     </div>
     @endforeach
 @endsection
-
