@@ -19,6 +19,13 @@ class EventController extends Controller
         return view('events.list', compact('events', 'participatedEvents'));
     }
 
+    public function show(Event $event)
+    {
+        $game = $event->game;
+        $participatedEvents = $this->getParticipatedEvents();
+        return view('events.detail', compact('game','event', 'participatedEvents'));
+    }
+
     public function create()
     {
         return view('events.create');
