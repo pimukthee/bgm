@@ -27,6 +27,9 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $game = $event->game;
+            $numberOfParticipant = $event->participants->count();
+            $event->number = $numberOfParticipant;
+      
         $participatedEvents = $this->getParticipatedEvents();
         return view('events.detail', compact('game','event', 'participatedEvents'));
     }
@@ -62,6 +65,11 @@ class EventController extends Controller
     public function showAtHome()
     {
         $events= Event::all() ->sortByDesc('start_date')->take(5);
+        foreach ($events as $event)
+        {
+            $numberOfParticipant = $event->participants->count();
+            $event->number = $numberOfParticipant;
+        }
         $participatedEvents = $this->getParticipatedEvents();
         return view('welcome', compact('events', 'participatedEvents'));
     }
