@@ -14,7 +14,7 @@
                         <h5>DATE : {{$event->start_date}}</h5>
                         
                         @if (auth()->check() && $event->has_end == "0")
-                            <form method="post" action="/events/{{$event->id}}/end">
+                            <form method="get" action="/events/{{$event->id}}/rank">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-danger" type="submit">END</button>
@@ -24,14 +24,9 @@
                                 <input type="hidden" name="event_id" value="{{$event->id}}">
                                 <button class="btn btn-danger" type="submit">DELETE</button>
                             </form>
-                        @else
-                            <button class="btn btn-primary" type="submit">END</button>
                         @endif
 
                         <br>
-                        
-                        <a href="/events/{{$event->id}}/rank" class="btn btn-primary" role="button" aria-disabled="true">Give Rank</a>
-
                     </div>
                     <div class="col col-lg-3">
                         <h4><b>{{$event->user->name}}</b></h4>
