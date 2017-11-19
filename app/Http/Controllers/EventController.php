@@ -15,6 +15,11 @@ class EventController extends Controller
     public function fetch()
     {
         $events = Event::all() ->sortBy('start_date');
+        foreach ($events as $event)
+        {
+            $numberOfParticipant = $event->participants->count();
+            $event->number = $numberOfParticipant;
+        }
         $participatedEvents = $this->getParticipatedEvents();
         return view('events.list', compact('events', 'participatedEvents'));
     }
