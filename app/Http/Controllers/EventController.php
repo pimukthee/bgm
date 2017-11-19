@@ -80,6 +80,11 @@ class EventController extends Controller
         {
             $events = Event::all()  ->sortBy('start_date')  
             ->where('user_id', auth()->id());
+            foreach ($events as $event)
+            {
+                $numberOfParticipant = $event->participants->count();
+                $event->number = $numberOfParticipant;
+            }
             $participatedEvents = $this->getParticipatedEvents();
             return view('events.created', compact('events', 'participatedEvents'));
         }
