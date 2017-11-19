@@ -33,8 +33,11 @@
             <input type="password" class="form-control" id="password_confirmation" placeholder="Confirm Password" name="password_confirmation">
         </div>
 
-
-        <button class="btn btn-primary" type="submit">Register</button>
-        <a href="/login" aria-pressed="true"> (already have an account?)</a>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Register</button>
+            <a href="/login" aria-pressed="true"> (already have an account?)</a>
+        </div>
     </form>
+
+    @include('layouts.errors')
 @endsection
