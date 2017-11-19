@@ -16,11 +16,7 @@ class EventController extends Controller
     public function fetch()
     {
         $events = Event::all() ->sortBy('start_date');
-        foreach ($events as $event)
-        {
-            $numberOfParticipant = $event->participants->count();
-            $event->number = $numberOfParticipant;
-        }
+        $events = $this->zipNumberOfParticipant($events);
         $participatedEvents = $this->getParticipatedEvents();
         return view('events.list', compact('events', 'participatedEvents'));
     }
@@ -72,11 +68,7 @@ class EventController extends Controller
     public function showAtHome()
     {
         $events= Event::all() ->sortByDesc('start_date')->take(5);
-        foreach ($events as $event)
-        {
-            $numberOfParticipant = $event->participants->count();
-            $event->number = $numberOfParticipant;
-        }
+        $events = $this->zipNumberOfParticipant($events);
         $participatedEvents = $this->getParticipatedEvents();
         return view('welcome', compact('events', 'participatedEvents'));
     }
@@ -87,11 +79,7 @@ class EventController extends Controller
         {
             $events = Event::all()  ->sortBy('start_date')  
             ->where('user_id', auth()->id());
-            foreach ($events as $event)
-            {
-                $numberOfParticipant = $event->participants->count();
-                $event->number = $numberOfParticipant;
-            }
+            $events = $this->zipNumberOfParticipant($events);
             $participatedEvents = $this->getParticipatedEvents();
             return view('events.created', compact('events', 'participatedEvents'));
         }
@@ -194,5 +182,16 @@ class EventController extends Controller
         {
             return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
         }
+    }
+
+
+    private function zipNumberOfParticipant($events)
+    {
+        foreach ($events as $event)
+        {
+            $numberOfParticipant = $event->participants->count();
+            $event->number = $numberOfParticipant;
+        }
+        return $events;
     }
 }
