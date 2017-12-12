@@ -23,7 +23,7 @@
                 <input type="text" class="form-control" id="datePicker" name="start_date" required>
             </div>
             <p id="dateHelpBlock" class="form-text text-muted">
-                yyyy-mm-dd hh:mm
+                yyyy-mm-dd hh:mm:ss
             </p>
         </div>
 
