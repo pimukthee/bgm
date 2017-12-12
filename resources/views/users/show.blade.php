@@ -22,8 +22,11 @@
                         <form method="post" action="/users/{{$user->id}}/unfollow">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <button class="btn btn-primary" type="submit">Unf`ollow</button>
+                                <button class="btn btn-primary" type="submit">Unfollow</button>
+                               
                         </form>
+                        <br>
+                        <a class="btn btn-primary" href="/users/{{$user->id}}/joined">JOINED EVENT</a>
                         @endif
 
                     @endif
