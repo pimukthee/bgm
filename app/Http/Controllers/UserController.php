@@ -8,6 +8,12 @@ use App\User;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['list', 'show', 'followers', 'followings']);
+    }
+
     public function list()
     {
         $users  = User::all();

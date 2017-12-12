@@ -13,6 +13,11 @@ use App\Rules\DateFormat;
 class EventController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show', 'fetch', 'showAtHome', 'participants']);
+    }
+
     public function fetch()
     {
         $events = Event::all()->sortBy('start_date')->where('has_end', 0);

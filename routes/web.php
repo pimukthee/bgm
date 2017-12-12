@@ -14,7 +14,7 @@
 Route::get('/', 'EventController@showAtHome')->name('home');
 
 Route::get('/register', 'RegistrationController@create');
-Route::get('/login', 'SessionController@create');
+Route::get('/login', 'SessionController@create')->name('login');
 Route::get('/logout', 'SessionController@destroy');
 Route::get('/users', 'UserController@list');
 Route::get('/users/{user}', 'UserController@show');
