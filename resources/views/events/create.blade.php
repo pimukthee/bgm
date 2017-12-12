@@ -9,7 +9,14 @@
        {{csrf_field()}}
         <div class="form-group">
             <label for="game">Game Name</label>
-            <input type="text" class="form-control" id="game" name="game_name" required>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control" id="game" name="game_name">
+                @foreach ($gamenames as $gamename)
+                <option>{{$gamename->name}}</option>
+                @endforeach
+            </select>
+            </div>
         </div>
 
         <div class="form-group">
