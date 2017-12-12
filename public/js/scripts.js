@@ -7,6 +7,7 @@ $( document ).ready(function() {
         $("#registerHeader").css("display", "block");
         $("#loginFooter").css("display", "none");
         $("#registerFooter").css("display", "block");
+        $('.owl-carousel').owlCarousel();
     });
     $('#login').click(function(){
         $("#loginBox").css("display", "block");
@@ -58,4 +59,10 @@ $( document ).ready(function() {
         $("#formRegister" + id).attr('class', 'form-group');
         $("#register" + id).attr('class', 'form-control');
     }
+
+    $("#autocarousel").owlCarousel({
+        loop:true,
+        autoplay:true,
+        autoplayTimeout:1000
+    });
 });
