@@ -30,9 +30,19 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         @if(Auth::check())
+            <div class="dropdown">
+                <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Notifications <span class="badge">22</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div>
             <a class="btn btn-outline-success" href="/logout">Log out</a>
         @else
-        <a class="btn btn-outline-success" href="/login">Log in</a>
+            <a class="btn btn-outline-success" href="/login">Log in</a>
         @endif
     </div>
 </nav>
