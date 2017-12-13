@@ -16,21 +16,23 @@
                     <h5>DATE : {{$event->start_date}}</h5>
                         <div class="row">
                             <div class="col-md-11">
-                            <p>Required Rank: {{$event->min_rank}}</p>
-                            <p>Max participants: {{$event->max_participants}}</p>
+                                <p>Required Rank: {{$event->min_rank}}</p>
+                                <p>Max participants: {{$event->max_participants}}</p>
+                                <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite/{{$event->id}}" role="button">INVITE</a>
                             </div>
-
                         </div>    
                 </div>
                 <div class="col col-lg-3">
                     <h4><b>Host: {{$event->user->name}}</b></h4>
                     @if (auth()->check() && !in_array($event->id, $participatedEvents))
                                 @if (($event->num) < ($event->max_participants))
-                                    <form method="post" action="/join/{{$event->id}}">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="event_id" value="{{$event->id}}">
-                                        <button class="btn btn-secondary" type="submit">JOIN</button>
-                                    </form> 
+                                    @if((auth()->id()) != ($event->user_id))
+                                        <form method="post" action="/join/{{$event->id}}">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="event_id" value="{{$event->id}}">
+                                            <button class="btn btn-secondary" type="submit">JOIN</button>
+                                        </form>
+                                    @endif 
                                 @endif    
                                     <form method="get" action="/events/{{$event->id}}/participants">
                                         {{ csrf_field() }}
@@ -38,7 +40,7 @@
                                         <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
                                     </form>
                                     @if (auth()->id() == $event->user_id)
-                                        <form method="post" action="/events/delete/{{$event->id}}">
+                                        <form method="post" action="/events/{{$event->id}}/delete">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="event_id" value="{{$event->id}}">
                                             <button class="btn btn-danger" type="submit">DELETE</button>
@@ -47,11 +49,13 @@
                                 @endif
 
                                 @if (auth()->check() && in_array($event->id, $participatedEvents))
-                                    <form method="post" action="/events/cancel/{{$event->id}}">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="event_id" value="{{$event->id}}">
-                                        <button class="btn btn-danger" type="submit">CANCEL</button>
-                                    </form>
+                                    @if((auth()->id()) != ($event->user_id))
+                                        <form method="post" action="/events/cancel/{{$event->id}}">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="event_id" value="{{$event->id}}">
+                                            <button class="btn btn-danger" type="submit">CANCEL</button>
+                                        </form>
+                                    @endif
                                 @endif
                     <p><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></p>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Notifications\DeletedEvent;
 use App\Event;
 use App\User;
 use App\RecentGame;
@@ -13,6 +14,11 @@ use App\Rules\DateFormat;
 class EventController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show', 'fetch', 'showAtHome', 'participants']);
+    }
+
     public function fetch()
     {
         $events = Event::all()->sortBy('start_date')->where('has_end', 0);
@@ -24,16 +30,17 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $game = $event->game;
-            $numberOfParticipant = $event->participants->count();
-            $event->number = $numberOfParticipant;
-      
+        $numberOfParticipant = $event->participants->count();
+        $event->number = $numberOfParticipant;
         $participatedEvents = $this->getParticipatedEvents();
+
         return view('events.detail', compact('game','event', 'participatedEvents'));
     }
 
     public function create()
     {
-        return view('events.create');
+        $gamenames = Game::all();
+        return view('events.create', compact('gamenames'));
     }
 
     public function cancel(Event $event)
@@ -45,13 +52,16 @@ class EventController extends Controller
     public function store()
     {
         $this->validate(request(), [
+            'game_id' => 'required',
             'name' => 'required',
             'start_date' => new DateFormat,
             'location' => 'required',
             'min_rank' => 'required'
         ]);
-        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
 
+        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
+        $event->game_id = request()->game_id;
+        
         auth()->user()->createEvent($event);
         $this->join($event);
         
@@ -135,6 +145,36 @@ class EventController extends Controller
         return view('events.participants', compact('users'));
     }
     
+    public function delete(Event $event)
+    {
+        $participants = $this->getParticipants($event);
+        foreach ($participants as $participant)
+        {
+            $participant->notify(new DeletedEvent($event));
+        }
+        $event->delete();
+        
+        return redirect()->home();
+    }
+
+
+    private function getParticipatedEvents()
+    {
+        if (auth()->check())
+        {
+            return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
+        }
+    }
+
+    private function zipNumberOfParticipant($events)
+    {
+        foreach ($events as $event)
+        {
+            $numberOfParticipant = $event->participants->count();
+            $event->number = $numberOfParticipant;
+        }
+        return $events;
+    }
 
     private function getParticipants(Event $event)
     {
@@ -167,30 +207,5 @@ class EventController extends Controller
             }
         }
         return redirect()->home();
-    }
-
-    public function delete(Event $event)
-    {
-        $event->delete();
-        return redirect()->home();
-    }
-
-
-    private function getParticipatedEvents()
-    {
-        if (auth()->check())
-        {
-            return DB::table('participants')->where('user_id', auth()->user()->id)->pluck('event_id')->toArray();
-        }
-    }
-
-    private function zipNumberOfParticipant($events)
-    {
-        foreach ($events as $event)
-        {
-            $numberOfParticipant = $event->participants->count();
-            $event->number = $numberOfParticipant;
-        }
-        return $events;
     }
 }

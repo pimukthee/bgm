@@ -9,7 +9,14 @@
        {{csrf_field()}}
         <div class="form-group">
             <label for="game">Game Name</label>
-            <input type="text" class="form-control" id="game" name="game_name" required>
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">Example select</label>
+            <select class="form-control form-control-lg" id="gameid" name="game_id">
+                @foreach ($gamenames as $gamename)
+                <option value="{{$gamename->id}}">{{$gamename->name}}</option>
+                @endforeach
+            </select>
+            </div>
         </div>
 
         <div class="form-group">
@@ -23,7 +30,7 @@
                 <input type="text" class="form-control" id="datePicker" name="start_date" required>
             </div>
             <p id="dateHelpBlock" class="form-text text-muted">
-                yyyy-mm-dd hh:mm
+                yyyy-mm-dd hh:mm:ss
             </p>
         </div>
 

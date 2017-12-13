@@ -14,7 +14,7 @@ class CreateRecentGamesTable extends Migration
     public function up()
     {
         Schema::create('recent_games', function (Blueprint $table) {
-            $table->integer('event_id')->unsigned()->index();
+            $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
