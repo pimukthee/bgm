@@ -21,6 +21,7 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::get('/users/{user}/following', 'UserController@followings');
 Route::get('/users/{user}/followers', 'UserController@followers');
+Route::get('/users/{user}/joined', 'UserController@joined');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::post('/users/{user}/follow', 'UserController@follow');
