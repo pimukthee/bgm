@@ -106,7 +106,7 @@ class UserController extends Controller
 
     public function followers(user $user)
     {
-         $followingList = $this->getFollowers($user);
+        $followingList = $this->getFollowers($user);
         return view('users.follower',compact('followingList'));
     }
 
@@ -115,7 +115,17 @@ class UserController extends Controller
         return DB::table('follows')
                     ->join('users', 'follower_id', '=', 'users.id')
                     ->where('following_id', $user->id)
-                    ->get();                
+                    ->get();              
+    }
+
+    public function joined(User $user)
+    {
+        $events =  DB::table('participants')
+                    ->join('events', 'participants.event_id', '=', 'events.id')
+                    ->where('participants.user_id', $user->id)
+                    ->get();           
+        return view('users.joined',compact('events'));
+         
     }
 
     public function invite(User $user, Event $event)

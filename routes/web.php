@@ -24,6 +24,7 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/users/{user}/edit', 'UserController@edit');
 Route::get('/users/{user}/following', 'UserController@followings');
 Route::get('/users/{user}/followers', 'UserController@followers');
+Route::get('/users/{user}/joined', 'UserController@joined');
 Route::get('/users/{user}/invite/{event}', 'UserController@invite');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
