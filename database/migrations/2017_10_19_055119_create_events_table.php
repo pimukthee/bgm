@@ -16,14 +16,14 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('user_id');
-            $table->integer('game_id')->default(0);
+            $table->integer('user_id')->unsigned();
+            $table->integer('game_id')->unsigned();
             $table->integer('min_rank')->default(0);
             $table->integer('max_participants')->default(5);
             $table->string('location');
             $table->boolean('has_end')->default(false);
             $table->text('description');
-            $table->date('start_date');
+            $table->timestamp('start_date');
             $table->timestamps();
         });
     }

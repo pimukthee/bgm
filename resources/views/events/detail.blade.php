@@ -17,6 +17,9 @@
                     <div class="col-md-11">
                     <p>Required Rank: {{$event->min_rank}}</p>
                     <p>Max participants: {{$event->max_participants}}</p>
+                    @if (auth()->check())
+                        <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite/{{$event->id}}" role="button">INVITE</a>
+                    @endif
                     </div>
 
                 </div>    
@@ -37,7 +40,7 @@
                                 <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
                             </form>
                             @if (auth()->id() == $event->user_id)
-                                <form method="post" action="/events/delete/{{$event->id}}">
+                                <form method="post" action="/events/{{$event->id}}/delete">
                                     {{ csrf_field() }}
                                     <input type="hidden" name="event_id" value="{{$event->id}}">
                                     <button class="btn btn-danger" type="submit">DELETE</button>

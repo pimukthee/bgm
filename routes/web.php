@@ -12,9 +12,12 @@
 */
 
 Route::get('/', 'EventController@showAtHome')->name('home');
+Route::get('/home', function() {
+    return redirect()->home();
+});
 
 Route::get('/register', 'RegistrationController@create');
-Route::get('/login', 'SessionController@create');
+Route::get('/login', 'SessionController@create')->name('login');
 Route::get('/logout', 'SessionController@destroy');
 Route::get('/users', 'UserController@list');
 Route::get('/users/{user}', 'UserController@show');
@@ -22,11 +25,14 @@ Route::get('/users/{user}/edit', 'UserController@edit');
 Route::get('/users/{user}/following', 'UserController@followings');
 Route::get('/users/{user}/followers', 'UserController@followers');
 Route::get('/users/{user}/joined', 'UserController@joined');
+Route::get('/users/{user}/invite/{event}', 'UserController@invite');
 Route::post('/register', 'RegistrationController@store');
 Route::post('/login', 'SessionController@store');
 Route::post('/users/{user}/follow', 'UserController@follow');
 Route::post('/users/{user}/unfollow', 'UserController@unfollow');
 Route::post('/users/{user}/update', 'UserController@update');
+Route::post('/users/{user}/inviting/{event}', 'UserController@inviting');
+
 
 Route::get('/events/create', 'EventController@create');
 Route::get('/events/created', 'EventController@created');
@@ -48,3 +54,6 @@ Route::get('/games/{game}', 'GameController@show');
 
 Route::post('/search', 'SearchController@search');
 
+Route::get('/markAsRead', function() {
+    auth()->user()->unreadNotifications->markAsRead();
+});

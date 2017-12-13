@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use App\Event;
+use App\Notifications\Invited;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['list', 'show', 'followers', 'followings']);
+    }
+
     public function list()
     {
         $users  = User::all();
@@ -120,4 +128,35 @@ class UserController extends Controller
          
     }
 
+    public function invite(User $user, Event $event)
+    {
+        $following = $this->getInvite($user, $event);
+        return view('users.invite',compact('following', 'event', 'user'));
+    }
+
+    public function getInvite(User $user, Event $event)
+    {
+        return DB::table('follows')
+                    ->join('users', 'following_id', '=', 'users.id')
+                    ->join('participants', 'participants.user_id', "=", 'users.id')
+                    ->where('follower_id', $user->id)
+                    ->where('event_id', "<>" ,$event->id)
+                    ->distinct()
+                    ->get();                
+    }
+
+    public function inviting(User $user, Event $event, Request $request)
+    {
+        $guests = $request->all();
+        foreach ($guests as $guest)
+        {
+            $user = User::find($guest);
+            if (is_numeric($guest) == true)
+            {
+                $user->notify(new Invited($event));
+            }
+        }
+        session()->flash('login_message', 'Your invite has been sent!');
+        return redirect()->home();
+    }
 }

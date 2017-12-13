@@ -26,7 +26,7 @@ class DateFormat implements Rule
     public function passes($attribute, $value)
     {
         //
-        $regex = '/[0-9]{4}-[0-9]{2}-[0-9]{2}\\s[0-9]{2}:[0-9]{2}/';
+        $regex = '/[0-9]{4}-[0-9]{2}-[0-9]{2}\\s[0-9]{2}:[0-9]{2}:[0-9]{2}/';
         return preg_match($regex, $value, $matches);
     }
 
