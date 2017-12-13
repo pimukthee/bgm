@@ -32,7 +32,7 @@
         @if(Auth::check())
             <a class="btn btn-outline-success" href="/logout">Log out</a>
         @else
-        <a class="btn btn-outline-success" href="/login">Log in</a>
+            <a class="btn btn-outline-success" href="/login">Log in | Register </a>
         @endif
     </div>
 </nav>
