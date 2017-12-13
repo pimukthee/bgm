@@ -8,7 +8,7 @@
                 <div class="card-block">
                     <blockquote class="card-blockquote">
                         <ul class="list-inline">
-                            <a class="list-inline-item" href="/users/{{$user->id}}/follower">
+                            <a class="list-inline-item" href="/users/{{$user->id}}/followers">
                                 <span class="badge badge-default badge-pill">{{$user -> total_follower}}</span>
                                 Followers
                             </a>
