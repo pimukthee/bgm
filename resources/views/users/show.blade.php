@@ -16,26 +16,28 @@
                         <form method="post" action="/users/{{$user->id}}/follow">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <button class="btn btn-primary" type="submit">Follow</button>
+                                <button class="btn btn-primary btn-lg active" type="submit">Follow</button>
+                                
                         </form>
                         @else
                         <form method="post" action="/users/{{$user->id}}/unfollow">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="user_id" value="{{$user->id}}">
-                                <button class="btn btn-primary" type="submit">Unfollow</button>
+                                <button class="btn btn-primary btn-lg active" type="submit">Unfollow</button>
                                
                         </form>
                         <br>
-                        <a class="btn btn-primary" href="/users/{{$user->id}}/joined">JOINED EVENT</a>
                         @endif
-
+                        
                     @endif
+                    
 
                     @if(Auth::check() and $user->name == Auth::user()->name)
                         <a href="/users/{{$user->id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">edit</a>
                     @endif
-
                     <br>
+                    <br>
+                    <a class="btn btn-primary btn-lg active" href="/users/{{$user->id}}/joined">JOINED EVENT</a>
                     <div class="col-md-12 col-sm-12 col-xs-12 ">
                         <div class="row">
                             <div class="col-md-6 col-sm-6 col-xs-12 stats-col">
