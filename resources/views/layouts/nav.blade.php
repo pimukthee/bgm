@@ -21,6 +21,9 @@
                 <li class="nav-item">
                 <a class="nav-link" href="/events/created">Created</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/users/{{auth()->id()}}">{{auth()->user()->name}}</a>
+                </li>
             @endif
         </ul>
         
