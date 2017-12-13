@@ -135,7 +135,7 @@ class UserController extends Controller
                 $user->notify(new Invited($event));
             }
         }
-
+        session()->flash('login_message', 'Your invite has been sent!');
         return redirect()->home();
     }
 }
