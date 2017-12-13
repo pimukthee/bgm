@@ -136,13 +136,12 @@ class UserController extends Controller
 
     public function getInvite(User $user, Event $event)
     {
-        return DB::table('follows')
-                    ->join('users', 'following_id', '=', 'users.id')
-                    ->join('participants', 'participants.user_id', "=", 'users.id')
-                    ->where('follower_id', $user->id)
-                    ->where('event_id', "<>" ,$event->id)
-                    ->distinct()
-                    ->get();                
+        return DB::select("select u.id, u.name 
+                            from users as u
+                            join follows on following_id = u.id 
+                            where u.id not in 
+                                    (select user_id from participants where event_id = $event->id) 
+                                and follower_id =$user->id");  
     }
 
     public function inviting(User $user, Event $event, Request $request)
