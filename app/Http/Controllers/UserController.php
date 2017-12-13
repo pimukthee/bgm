@@ -36,7 +36,7 @@ class UserController extends Controller
                             ->join('events', 'recent_games.event_id', '=', 'events.id')
                             ->join('games', 'games.id', '=', 'events.game_id')
                             ->groupBy('events.game_id')
-                            ->having('recent_games.user_id', '=', 1)
+                            ->having('recent_games.user_id', '=', $user->id)
                             ->get();
 
         $follow = DB::table('follows')

@@ -59,8 +59,9 @@ class EventController extends Controller
             'min_rank' => 'required'
         ]);
 
-        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
+        $event = new Event(request(['name', 'start_date', 'location', 'min_rank','max_participants', 'description']));
         $event->game_id = request()->game_id;
+        $event->max_participants = request()->max_participants;
         
         auth()->user()->createEvent($event);
         $this->join($event);
