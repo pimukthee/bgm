@@ -30,11 +30,11 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         @if(Auth::check())
-            <div class="dropdown">
-                <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown" id = "markasread">
+                <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="markNotificationAsRead()">
                     Notifications <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                     @foreach (auth()->user()->unreadNotifications as $notification)
                         @include('layouts.notification.'.snake_case(class_basename($notification->type)))
                     @endforeach
@@ -46,3 +46,10 @@
         @endif
     </div>
 </nav>
+
+<script>
+    function markNotificationAsRead()
+    {
+        axios.get('/markAsRead');
+    }
+</script>

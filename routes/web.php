@@ -47,3 +47,6 @@ Route::get('/games/{game}', 'GameController@show');
 
 Route::post('/search', 'SearchController@search');
 
+Route::get('/markAsRead', function() {
+    auth()->user()->unreadNotifications->markAsRead();
+});
