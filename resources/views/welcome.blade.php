@@ -73,27 +73,27 @@
               <div class="col col-lg-3">
                     <h4><b>Host: {{$event->user->name}}</b></h4>
                     @if (auth()->check() && !in_array($event->id, $participatedEvents))
-                                @if (($event->num) < ($event->max_participants))
-                                    @if((auth()->id()) != ($event->user_id))
-                                        <form method="post" action="/join/{{$event->id}}">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="event_id" value="{{$event->id}}">
-                                            <button class="btn btn-secondary" type="submit">JOIN</button>
-                                        </form> 
-                                    @endif
-                                @endif    
-                                    <form method="get" action="/events/{{$event->id}}/participants">
-                                        {{ csrf_field() }}
-                                        <input type="hidden" name="event_id" value="{{$event->id}}">
-                                        <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
-                                    </form>
-                                @if (auth()->id() == $event->user_id)
-                                    <form method="post" action="/events/{{$event->id}}/delete">
-                                          {{ csrf_field() }}
-                                          <input type="hidden" name="event_id" value="{{$event->id}}">
-                                          <button class="btn btn-danger" type="submit">DELETE</button>
-                                    </form>
-                                @endif
+                        @if (($event->num) < ($event->max_participants))
+                            @if((auth()->id()) != ($event->user_id))
+                                <form method="post" action="/join/{{$event->id}}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="event_id" value="{{$event->id}}">
+                                    <button class="btn btn-secondary" type="submit">JOIN</button>
+                                </form> 
+                            @endif
+                        @endif    
+                    @endif
+                    <form method="get" action="/events/{{$event->id}}/participants">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="event_id" value="{{$event->id}}">
+                        <button class="btn btn-secondary" type="submit">PARTICIPANTS</button>
+                    </form>
+                    @if (auth()->id() == $event->user_id && auth()->check())
+                        <form method="post" action="/events/{{$event->id}}/delete">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="event_id" value="{{$event->id}}">
+                                <button class="btn btn-danger" type="submit">DELETE</button>
+                        </form>
                     @endif
 
                     @if (auth()->check() && in_array($event->id, $participatedEvents))
