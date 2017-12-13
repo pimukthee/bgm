@@ -70,8 +70,17 @@ class EventController extends Controller
     
     public function join(Event $event) 
     {
-        auth()->user()->join($event->id);
-        
+        $ranks = $this->getRank($event->game, auth()->id()); 
+        if (count($ranks) > 0) $rank = $ranks[0];
+        else $rank = 0;
+        if ($rank >= $event->min_rank)
+        {
+            auth()->user()->join($event->id);
+        }
+        else 
+        {
+            session()->flash('logout_message', 'Your rank is not the requirement!');
+        }
         return redirect()->home();
     }
     
@@ -207,5 +216,10 @@ class EventController extends Controller
             }
         }
         return redirect()->home();
+    }
+    
+    private function getRank($game, $user)
+    {
+        return DB::table('ranks')->where('game_id', $game)->where('user_id', $user)->pluck('score');
     }
 }
