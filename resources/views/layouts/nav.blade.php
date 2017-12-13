@@ -32,12 +32,12 @@
         @if(Auth::check())
             <div class="dropdown">
                 <button class="btn btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Notifications <span class="badge">22</span>
+                    Notifications <span class="badge">{{count(auth()->user()->unreadNotifications)}}</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    @foreach (auth()->user()->unreadNotifications as $notification)
+                        @include('layouts.notification.'.snake_case(class_basename($notification->type)))
+                    @endforeach
                 </div>
             </div>
             <a class="btn btn-outline-success" href="/logout">Log out</a>
