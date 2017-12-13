@@ -139,7 +139,7 @@ class UserController extends Controller
         return DB::table('follows')
                     ->join('users', 'following_id', '=', 'users.id')
                     ->join('participants', 'participants.user_id', "=", 'users.id')
-                    ->where('following_id', $user->id)
+                    ->where('follower_id', $user->id)
                     ->where('event_id', "<>" ,$event->id)
                     ->distinct()
                     ->get();                
