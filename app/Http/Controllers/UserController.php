@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use App\Event;
 use App\Notifications\Invited;
 
 class UserController extends Controller
@@ -117,13 +118,13 @@ class UserController extends Controller
                     ->get();                
     }
 
-    public function invite(User $user)
+    public function invite(User $user, Event $event)
     {
         $following = $this->getFollowings($user);
-        return view('users.invite',compact('following'));
+        return view('users.invite',compact('following', 'event', 'user'));
     }
 
-    public function inviting(User $user, Request $request)
+    public function inviting(User $user, Event $event, Request $request)
     {
         $guests = $request->all();
         foreach ($guests as $guest)
@@ -131,7 +132,7 @@ class UserController extends Controller
             $user = User::find($guest);
             if (is_numeric($guest) == true)
             {
-                $user->notify(new Invited());
+                $user->notify(new Invited($event));
             }
         }
 

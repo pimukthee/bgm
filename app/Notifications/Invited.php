@@ -11,14 +11,16 @@ class Invited extends Notification
 {
     use Queueable;
 
+    protected $event;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event)
     {
-        //
+        $this->event = $event;
     }
 
     /**
@@ -35,7 +37,8 @@ class Invited extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            //
+            'user'=>auth()->user(),
+            'event'=>$this->event
         ];
     }
 
