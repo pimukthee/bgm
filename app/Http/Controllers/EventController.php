@@ -52,13 +52,16 @@ class EventController extends Controller
     public function store()
     {
         $this->validate(request(), [
+            'game_id' => 'required',
             'name' => 'required',
             'start_date' => new DateFormat,
             'location' => 'required',
             'min_rank' => 'required'
         ]);
-        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
 
+        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
+        $event->game_id = request()->game_id;
+        
         auth()->user()->createEvent($event);
         $this->join($event);
         

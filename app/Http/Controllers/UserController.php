@@ -116,4 +116,14 @@ class UserController extends Controller
                     ->get();                
     }
 
+    public function invite(User $user)
+    {
+        $following = $this->getFollowings($user);
+        return view('users.invite',compact('following'));
+    }
+
+    public function invited(User $user)
+    {
+       echo $wajehf;
+    }
 }

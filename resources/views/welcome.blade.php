@@ -42,13 +42,16 @@
     </div>
   <!-- homepage carousel end -->
   @foreach ($events as $event)
-  <div class="row card-space">
+  <a href="/events/{{$event->id}}" style="color:black; text-decoration: none;">
+  <div class="row card-space" href= "/events/$event->id">
       <div class="col-1"></div>
           <div class="card col-10">
           <div class="row">
               <div class="col">
                   <h4><b>EVENT: {{$event->name}}</b></h4>
-                  <p>{{$event->description}}</p>
+                  @if(strlen($event->description) != 0)
+                    <p>{{substr($event->description, 0, 20)}}...</p>
+                  @endif
                   <h5>Location: {{$event->location}}</h5>
                   <h5>Recruit: {{($event->max_participants)-($event->number)}} player(s)</h5>
               </div>
@@ -58,6 +61,7 @@
                           <div class="col-md-11">
                           <p>Required Rank: {{$event->min_rank}}</p>
                           <p>Max participants: {{$event->max_participants}}</p>
+                          <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite" role="button">INVITE</a>
                           </div>
 
                       </div>    
@@ -99,6 +103,7 @@
           </div>
       <div class="col-1"></div>
   </div>
+    </a>
   @endforeach
     <div class="card-footer">
         <a href="/events" class="btn btn-primary btn-lg btn-block" role="button" aria-pressed="true">See More</a>
