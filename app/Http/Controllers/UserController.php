@@ -60,6 +60,7 @@ class UserController extends Controller
         ]);
 
         $user->name = request('name');
+        $user->about_me = request('about_me');
         $user->save();
         
         return redirect('/users/'.$user->id);
