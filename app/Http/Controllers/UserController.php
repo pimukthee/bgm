@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\User;
+use App\Notifications\Invited;
 
 class UserController extends Controller
 {
@@ -122,8 +123,18 @@ class UserController extends Controller
         return view('users.invite',compact('following'));
     }
 
-    public function invited(User $user)
+    public function inviting(User $user, Request $request)
     {
-       echo $wajehf;
+        $guests = $request->all();
+        foreach ($guests as $guest)
+        {
+            $user = User::find($guest);
+            if (is_numeric($guest) == true)
+            {
+                $user->notify(new Invited());
+            }
+        }
+
+        return redirect()->home();
     }
 }
