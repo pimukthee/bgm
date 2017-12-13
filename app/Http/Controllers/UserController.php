@@ -35,8 +35,9 @@ class UserController extends Controller
                             ->select('games.name', 'recent_games.place','recent_games.user_id')
                             ->join('events', 'recent_games.event_id', '=', 'events.id')
                             ->join('games', 'games.id', '=', 'events.game_id')
-                            ->groupBy('events.game_id')
-                            ->having('recent_games.user_id', '=', $user->id)
+                            ->where('recent_games.user_id', $user->id)
+                            ->orderBy('recent_games.created_at', 'desc')
+                            ->take(3)
                             ->get();
 
         $follow = DB::table('follows')

@@ -9,6 +9,7 @@ use App\Event;
 use App\User;
 use App\RecentGame;
 use App\Game;
+use Carbon\Carbon;
 use App\Rules\DateFormat;
 
 class EventController extends Controller
@@ -204,6 +205,7 @@ class EventController extends Controller
         foreach ($participants as $participant)
         {
             $participant->recentGames()->attach($event, ['place' => request()->input($participant->id)]);
+            DB::table('recent_games')->where('event_id', $event->id)->where('user_id', $participant->id)->update(array('created_at' => Carbon::now()));
         }
     }
     
@@ -213,7 +215,11 @@ class EventController extends Controller
         $numberOfParticipants = count($participants);
         foreach ($participants as $participant)
         {
-            $score = (request()->input($participant->id) - 1 + $numberOfParticipants) * 1000;
+            $score = $this->getRank($event->game_id, $participant->id); 
+            if (count($score) > 0) $score = $score[0];
+            else $score = 0;
+
+            $score = $score + (($numberOfParticipants - request()->input($participant->id) + 1) * 1000);
             $hasRank = $participant->games->contains($game->id);
             if ($hasRank)
             {
@@ -224,7 +230,6 @@ class EventController extends Controller
                 $participant->games()->attach($game->id, ['score'  => $score]);
             }
         }
-        return redirect()->home();
     }
     
     private function getRank($game, $user)
