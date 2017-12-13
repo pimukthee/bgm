@@ -15,10 +15,12 @@
                 <div class="col-md-auto">
                     <h5>DATE : {{$event->start_date}}</h5>
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-11">
                                 <p>Required Rank: {{$event->min_rank}}</p>
                                 <p>Max participants: {{$event->max_participants}}</p>
-                                <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite" role="button">INVITE</a>
+                                @if (auth()->check())
+                                    <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite" role="button">INVITE</a>
+                                @endif
                             </div>
                         </div>    
                 </div>
