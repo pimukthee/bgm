@@ -38,7 +38,8 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('events.create');
+        $gamenames = Game::all();
+        return view('events.create', compact('gamenames'));
     }
 
     public function cancel(Event $event)
