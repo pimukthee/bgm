@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'EventController@showAtHome')->name('home');
+Route::get('/home', function() {
+    return redirect()->home();
+});
 
 Route::get('/register', 'RegistrationController@create');
 Route::get('/login', 'SessionController@create')->name('login');
