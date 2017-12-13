@@ -11,9 +11,9 @@
             <label for="game">Game Name</label>
             <div class="form-group">
             <label for="exampleFormControlSelect1">Example select</label>
-            <select class="form-control" id="game" name="game_name">
+            <select class="form-control form-control-lg" id="gameid" name="game_id">
                 @foreach ($gamenames as $gamename)
-                <option>{{$gamename->name}}</option>
+                <option value="{{$gamename->id}}">{{$gamename->name}}</option>
                 @endforeach
             </select>
             </div>
