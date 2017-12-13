@@ -9,6 +9,7 @@ use App\Event;
 use App\User;
 use App\RecentGame;
 use App\Game;
+use Carbon\Carbon;
 use App\Rules\DateFormat;
 
 class EventController extends Controller
@@ -59,8 +60,9 @@ class EventController extends Controller
             'min_rank' => 'required'
         ]);
 
-        $event = new Event(request(['name', 'start_date', 'location', 'min_rank', 'description']));
+        $event = new Event(request(['name', 'start_date', 'location', 'min_rank','max_participants', 'description']));
         $event->game_id = request()->game_id;
+        $event->max_participants = request()->max_participants;
         
         auth()->user()->createEvent($event);
         $this->join($event);
@@ -70,7 +72,24 @@ class EventController extends Controller
     
     public function join(Event $event) 
     {
-        auth()->user()->join($event->id);
+        if (count($this->getParticipants($event)) >= $event->max_participants) 
+        {
+            session()->flash('logout_message', 'Full!');
+        }
+        else 
+        {
+            $ranks = $this->getRank($event->game, auth()->id()); 
+            if (count($ranks) > 0) $rank = $ranks[0];
+            else $rank = 0;
+            if ($rank >= $event->min_rank)
+            {
+                auth()->user()->join($event->id);
+            }
+            else 
+            {
+                session()->flash('logout_message', 'Your rank is not the requirement!');
+            }
+        }
         
         return redirect()->home();
     }
@@ -186,6 +205,7 @@ class EventController extends Controller
         foreach ($participants as $participant)
         {
             $participant->recentGames()->attach($event, ['place' => request()->input($participant->id)]);
+            DB::table('recent_games')->where('event_id', $event->id)->where('user_id', $participant->id)->update(array('created_at' => Carbon::now()));
         }
     }
     
@@ -195,7 +215,11 @@ class EventController extends Controller
         $numberOfParticipants = count($participants);
         foreach ($participants as $participant)
         {
-            $score = (request()->input($participant->id) - 1 + $numberOfParticipants) * 1000;
+            $score = $this->getRank($event->game_id, $participant->id); 
+            if (count($score) > 0) $score = $score[0];
+            else $score = 0;
+
+            $score = $score + (($numberOfParticipants - request()->input($participant->id) + 1) * 1000);
             $hasRank = $participant->games->contains($game->id);
             if ($hasRank)
             {
@@ -206,6 +230,10 @@ class EventController extends Controller
                 $participant->games()->attach($game->id, ['score'  => $score]);
             }
         }
-        return redirect()->home();
+    }
+    
+    private function getRank($game, $user)
+    {
+        return DB::table('ranks')->where('game_id', $game)->where('user_id', $user)->pluck('score');
     }
 }

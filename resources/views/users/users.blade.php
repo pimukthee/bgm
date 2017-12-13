@@ -8,20 +8,16 @@
                 <div class="card-block">
                     <blockquote class="card-blockquote">
                         <ul class="list-inline">
-                            <a class="list-inline-item" href="#">
-                                <span class="badge badge-default badge-pill">0</span>
-                                Games
-                            </a>
-                            <a class="list-inline-item" href="#">
+                            <a class="list-inline-item" href="/users/{{$user->id}}/followers">
                                 <span class="badge badge-default badge-pill">{{$user -> total_follower}}</span>
                                 Followers
                             </a>
-                            <a class="list-inline-item" href="#">
+                            <a class="list-inline-item" href="/users/{{$user->id}}/following">
                                 <span class="badge badge-default badge-pill">{{$user -> total_following}}</span>
-                                Follwings
+                                Followings
                             </a>
                         </ul>
-                        About Me: Dapibus ac facilisis in
+                        About Me: {{$user->about_me}}
                     </blockquote>
                 </div>
             </div>

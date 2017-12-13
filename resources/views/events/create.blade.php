@@ -10,7 +10,6 @@
         <div class="form-group">
             <label for="game">Game Name</label>
             <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
             <select class="form-control form-control-lg" id="gameid" name="game_id">
                 @foreach ($gamenames as $gamename)
                 <option value="{{$gamename->id}}">{{$gamename->name}}</option>
@@ -42,6 +41,11 @@
          <div class="form-group">
           <label for="inputdefault">Require ranking</label>
           <input class="form-control" id="inputdefault" type="text" name="min_rank" required>
+         </div>
+
+         <div class="form-group">
+          <label for="inputdefault">Maximum participants</label>
+          <input class="form-control" id="inputdefault" type="text" name="max_participants" required>
          </div>
 
          <div class="form-group">

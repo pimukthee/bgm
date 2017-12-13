@@ -6,7 +6,7 @@
             <div class="profile-header row">
 
                 <div class="col-md-2 col-sm-2">
-                    <img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="header-avatar">
+                    <img src="/img/{{$game->name}}.jpg" alt="" class="header-avatar">
                 </div>
 
                 <div class="col-md-10 col-sm-10 profile-info">

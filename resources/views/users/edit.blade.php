@@ -16,7 +16,7 @@
                         <input type="text" class="form-control" id="registerName" placeholder="Name" name="name" value="{{$user->name}}" required>
                     </div>
 
-                    <label for="exampleFormControlTextarea1">About Me</label>
+                <label for="exampleFormControlTextarea1" id="aboutme" name="aboutme">About Me</label>
                     <div class="form-group">
                     <textarea class="form-control" id="about_me" rows="3" name="about_me">{{$user->about_me}}</textarea>
                     </div>
