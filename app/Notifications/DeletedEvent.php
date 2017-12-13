@@ -11,14 +11,16 @@ class DeletedEvent extends Notification
 {
     use Queueable;
 
+    protected $event;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($event)
     {
-        //
+        $this->event=$event;
     }
 
     /**
@@ -41,7 +43,8 @@ class DeletedEvent extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            //
+            'event'=>$this->event,
+            'user'=>$this->event->user
         ];
     }
 

@@ -33,7 +33,7 @@ class EventController extends Controller
         $numberOfParticipant = $event->participants->count();
         $event->number = $numberOfParticipant;
         $participatedEvents = $this->getParticipatedEvents();
-        
+
         return view('events.detail', compact('game','event', 'participatedEvents'));
     }
 
@@ -147,7 +147,7 @@ class EventController extends Controller
         $participants = $this->getParticipants($event);
         foreach ($participants as $participant)
         {
-            $participant->notify(new DeletedEvent);
+            $participant->notify(new DeletedEvent($event));
         }
         $event->delete();
         
