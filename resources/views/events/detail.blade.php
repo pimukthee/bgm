@@ -18,7 +18,7 @@
                     <p>Required Rank: {{$event->min_rank}}</p>
                     <p>Max participants: {{$event->max_participants}}</p>
                     @if (auth()->check())
-                         <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite" role="button">INVITE</a>
+                        <a class="btn btn-primary" href="/users/{{auth()->id()}}/invite/{{$event->id}}" role="button">INVITE</a>
                     @endif
                     </div>
 
