@@ -19,6 +19,7 @@ class CreateRecentGamesTable extends Migration
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('place');
+            $table->timestamps();
         });
     }
 
