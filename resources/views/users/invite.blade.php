@@ -7,7 +7,7 @@
             <div class="card col-10">
                 <div class="row">
                     <div class="col">
-                        <form method="post" action="invited">
+                        <form method="post" action="/users/{{auth()->id()}}/inviting/{{$event->id}}">
                             {{csrf_field()}}
                             @foreach ($following as $user)
                                 <div class="form-check form-check">
