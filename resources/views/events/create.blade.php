@@ -45,6 +45,11 @@
          </div>
 
          <div class="form-group">
+          <label for="inputdefault">Maximum participants</label>
+          <input class="form-control" id="inputdefault" type="text" name="max_participants" required>
+         </div>
+
+         <div class="form-group">
           <label for="inputdefault">Description</label>
           <input class="form-control" id="inputdefault" type="text" name="description">
          </div>
