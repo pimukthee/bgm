@@ -120,8 +120,18 @@ class UserController extends Controller
 
     public function invite(User $user, Event $event)
     {
-        $following = $this->getFollowings($user);
+        $following = $this->getInvite($user, $event);
         return view('users.invite',compact('following', 'event', 'user'));
+    }
+
+    public function getInvite(User $user, Event $event)
+    {
+        return DB::table('follows')
+                    ->join('users', 'follower_id', '=', 'users.id')
+                    ->join('participants', 'participants.user_id', "=", 'follower_id')
+                    ->where('following_id', $user->id )
+                    ->where('participants.event_id', "<>" ,$event)
+                    ->get();                
     }
 
     public function inviting(User $user, Event $event, Request $request)
