@@ -11,13 +11,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="/categories">Categories</a>
             </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/users/">Users</a>
+                </li>
             @if(Auth::check())
                 <li class="nav-item">
                 <a class="nav-link" href="/events/create">Create event</a>
                 </li>          
-                <li class="nav-item">
-                <a class="nav-link" href="/users/">Users</a>
-                </li>
                 <li class="nav-item">
                 <a class="nav-link" href="/events/created">Created</a>
                 </li>
