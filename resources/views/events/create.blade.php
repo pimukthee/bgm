@@ -10,7 +10,6 @@
         <div class="form-group">
             <label for="game">Game Name</label>
             <div class="form-group">
-            <label for="exampleFormControlSelect1">Example select</label>
             <select class="form-control form-control-lg" id="gameid" name="game_id">
                 @foreach ($gamenames as $gamename)
                 <option value="{{$gamename->id}}">{{$gamename->name}}</option>
